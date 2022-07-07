@@ -24,6 +24,7 @@ void    push(t_stack *a, t_stack *b)
 		i++;
 	}
 	a->current_size -= 1;
+	a->unsorted_size -= 1;
 }
 
 void    pb(t_stack *a, t_stack *b)

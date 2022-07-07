@@ -17,11 +17,11 @@ int	max_size(t_stack *n)
 	int	i;
 	int	max_size;
 
-	i = 1;
+	i = 0;
 	max_size = n->stack[0];
-	while (i < n->current_size)
+	while (i < n->unsorted_size - 1)
 	{
-		if (n->stack[i] > max_size)
+		if (n->stack[++i] > max_size)
 			max_size = n->stack[i];
 	}
 	return (max_size);

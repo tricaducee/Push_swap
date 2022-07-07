@@ -10,15 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HEADER/push_swap.h"
+#include "../print_stacks_cmd/print_stacks_cmd.h"
 
 int	monmax(t_stack *n, int max_size, unsigned int len)
 {
-	int i;
+	unsigned int	i;
+	unsigned int	j;
+	int				tmp;
 
+	if (len >= n->unsorted_size)
+		return (min_size(n));
 	i = 0;
-	while (i < n->current_size - n->sorted_size)
+	tmp = -2147483648;
+	//ft_printfd(1, "%d\n", n->unsorted_size);
+	//ft_printfd(1, "%d\n", max_size);
+	while (i < len - 1)
 	{
-		
+		j = 0;
+		while (j < n->unsorted_size)
+		{
+			if (n->stack[j] >= tmp && n->stack[j] < max_size)
+				tmp = n->stack[j];
+			j++;
+		}
+		max_size = tmp;
+		tmp = -2147483648;
+		i++;
 	}
+	return (max_size);
 }

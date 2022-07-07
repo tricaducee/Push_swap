@@ -20,7 +20,7 @@ typedef struct S_stack
 	int             *stack;
 	unsigned int    real_size;
 	unsigned int    current_size;
-	unsigned int    sorted_size;
+	unsigned int    unsorted_size;
 }                   t_stack;
 
 /*----------------CMD-----------------*/
@@ -47,6 +47,10 @@ void	set_stacks(t_stack *a, t_stack *b, char **av, unsigned int size);
 int		arg_check(char **av);
 int		ft_atoi(const char *str);
 int		max_size(t_stack *n);
+int		min_size(t_stack *n);
+int		monmax(t_stack *n, int max_size, unsigned int len);
+void	push_chunk(t_stack *a, t_stack *b, int min_size);
+void	sort_b(t_stack *a, t_stack *b);
 //size_t		ft_strlen(char *str);
 
 /*---------------SECURE----------------*/

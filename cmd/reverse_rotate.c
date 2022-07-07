@@ -16,6 +16,7 @@ void    reverse_rotate(t_stack *nb)
 	}
 	nb->stack[0] = tmp;
 }
+
 void    rra(t_stack *a)
 {
 	reverse_rotate(a);
