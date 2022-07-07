@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 	p_comment(&a, &b, 1, TIME, "STACKS");
 	while (a.unsorted_size > 0)
 	{
-		size = monmax(&a, max_size(&a), 5);
+		size = monmax(&a, max_size(&a), a.real_size / 12 + 22);
 		//ft_printfd(1, "%d\n", size);
 		push_chunk(&a, &b, size);
 		sort_b(&a, &b);

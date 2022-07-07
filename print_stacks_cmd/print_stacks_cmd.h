@@ -1,6 +1,6 @@
 #ifndef PRINT_STACKS_CMD_H
 # define PRINT_STACKS_CMD_H
-#define TIME 100
+#define TIME 20
 #include "../HEADER/push_swap.h"
 #include "../printfd/HEADER/ft_printfd.h"
 
