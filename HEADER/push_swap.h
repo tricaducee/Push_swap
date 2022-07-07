@@ -1,21 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/07 01:14:03 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/07 01:52:09 by hrolle           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-#include <unistd.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct S_stack
 {
-    int             *stack;
-    unsigned int    real_size;
-    unsigned int    current_size;
+	int             *stack;
+	unsigned int    real_size;
+	unsigned int    current_size;
 	unsigned int    sorted_size;
 }                   t_stack;
 
 /*----------------CMD-----------------*/
 
-void    push(t_stack *a, t_stack *b);
 void    pb(t_stack *a, t_stack *b);
+void    push(t_stack *a, t_stack *b);
 void    pa(t_stack *b, t_stack *a);
 void    rotate(t_stack *nb);
 void    ra(t_stack *a);
@@ -35,6 +46,7 @@ void    ss(t_stack *a, t_stack *b);
 void	set_stacks(t_stack *a, t_stack *b, char **av, unsigned int size);
 int		arg_check(char **av);
 int		ft_atoi(const char *str);
+int		max_size(t_stack *n);
 //size_t		ft_strlen(char *str);
 
 /*---------------SECURE----------------*/
