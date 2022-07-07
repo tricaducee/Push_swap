@@ -1,15 +1,27 @@
-#include "../print_stacks_cmd/print_stacks_cmd.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_b.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/07 20:30:15 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/07 23:41:33 by hrolle           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../HEADER/push_swap.h"
 
 int	i_max_size(t_stack *n)
 {
-	int				i;
+	unsigned int	i;
 	int				max_size;
 	unsigned int	ret;
 
 	i = 0;
 	ret = 0;
 	max_size = n->stack[0];
-	while (i < n->current_size)
+	while (i < n->current_size - 1)
 	{
 		if (n->stack[++i] > max_size)
 		{
@@ -28,24 +40,23 @@ void	sort_b(t_stack *a, t_stack *b)
 	while (b->current_size)
 	{
 		max_i = i_max_size(b);
+		i = 0;
 		if (max_i > b->current_size / 2)
 		{
-			i = 0;
 			while (i < b->current_size - max_i)
 			{
-				p_rrb(a, b, 1, TIME);
+				rrb(b);
 				i++;
 			}
 		}
 		else if (max_i)
 		{
-			i = 0;
 			while (i < max_i)
 			{
-				p_rb(a, b, 1, TIME);
+				rb(b);
 				i++;
 			}
 		}
-		p_pa(a, b, 1, TIME);
+		pa(b, a);
 	}
 }

@@ -2,7 +2,7 @@
 
 void	set_stacks(t_stack *a, t_stack *b, char **av, unsigned int size)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	a->real_size = size;

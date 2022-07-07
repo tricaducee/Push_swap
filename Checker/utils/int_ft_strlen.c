@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   max_size.c                                         :+:      :+:    :+:   */
+/*   int_ft_strlen.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 01:43:15 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 19:55:51 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/07 20:59:50 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/07 20:59:52 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HEADER/push_swap.h"
+#include "../HEADER/checker.h"
 
-int	max_size(t_stack *n)
+int	int_ft_strlen(char *str)
 {
-	unsigned int	i;
-	int	max_size;
+	int	i;
 
 	i = 0;
-	max_size = n->stack[0];
-	while (i < n->unsorted_size - 1)
-	{
-		if (n->stack[++i] > max_size)
-			max_size = n->stack[i];
-	}
-	return (max_size);
+	while (str[i])
+		i++;
+	return (i);
 }

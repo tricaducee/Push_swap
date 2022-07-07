@@ -1,4 +1,4 @@
-#include "../print_stacks_cmd/print_stacks_cmd.h"
+#include "../HEADER/push_swap.h"
 
 void	push_chunk(t_stack *a, t_stack *b, int min_size)
 {
@@ -10,9 +10,9 @@ void	push_chunk(t_stack *a, t_stack *b, int min_size)
 	while (i < len)
 	{
 		if (a->stack[0] >= min_size)
-			p_pb(a, b, 1, TIME);
+			pb(a, b);
 		else
-			p_ra(a, b, 1, TIME);
+			ra(a);
 		i++;
 	}
 }

@@ -2,7 +2,7 @@
 
 int	min_size(t_stack *n)
 {
-	int	i;
+	unsigned int	i;
 	int	min_size;
 
 	i = 0;

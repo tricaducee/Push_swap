@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   max_size.c                                         :+:      :+:    :+:   */
+/*   arg_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 01:43:15 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 19:55:51 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/07 20:59:28 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/07 20:59:31 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HEADER/push_swap.h"
+#include "../HEADER/checker.h"
 
-int	max_size(t_stack *n)
+int	arg_check(char **av)
 {
-	unsigned int	i;
-	int	max_size;
+	int	i;
+	int	j;
 
-	i = 0;
-	max_size = n->stack[0];
-	while (i < n->unsorted_size - 1)
+	i = 1;
+	while (av[i])
 	{
-		if (n->stack[++i] > max_size)
-			max_size = n->stack[i];
+		j = 0;
+		while (av[i][j] == ' ' || av[i][j] == '-' || av[i][j] == '+')
+			j++;
+		while (av[i][j])
+		{
+			if (av[i][j] > '9' || av[i][j] < '0')
+				return (0);
+			j++;
+		}
+		i++;
 	}
-	return (max_size);
+	return (1);
 }

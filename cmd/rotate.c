@@ -2,7 +2,7 @@
 
 void    rotate(t_stack *nb)
 {
-	int i;
+	unsigned int i;
 	int tmp;
 
 	if (nb->current_size < 2)

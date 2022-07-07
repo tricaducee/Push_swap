@@ -2,7 +2,7 @@
 
 void    push(t_stack *a, t_stack *b)
 {
-	int    i;
+	unsigned int    i;
 
 	if (!a->current_size)
 		return ;

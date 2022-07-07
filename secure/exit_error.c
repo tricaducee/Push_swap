@@ -1,8 +1,17 @@
 #include "../HEADER/push_swap.h"
-#include "../printfd/HEADER/ft_printfd.h"
+
+static int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 void	exit_error(char *str)
 {
-	ft_printfd(2, "%s\n", str);
+	write(2, str, ft_strlen(str));
 	exit(1);
 }

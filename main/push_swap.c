@@ -10,17 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../print_stacks_cmd/print_stacks_cmd.h"
-#include "../printfd/HEADER/ft_printfd.h"
+#include "../HEADER/push_swap.h"
 
-void	up_unsorted(t_stack *a, t_stack *b)
+void	up_unsorted(t_stack *a)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < a->unsorted_size)
 	{
-		p_rra(a, b, 1, TIME);
+		rra(a);
 		i++;
 	}
 }
@@ -34,16 +33,13 @@ int	main(int ac, char **av)
 	if (!arg_check(av) || ac < 3)
 		exit_error("ERROR ARG");
 	set_stacks(&a, &b, av, ac - 1);
-	p_comment(&a, &b, 1, TIME, "STACKS");
 	while (a.unsorted_size > 0)
 	{
-		size = monmax(&a, max_size(&a), a.real_size / 12 + 22);
-		//ft_printfd(1, "%d\n", size);
+		size = monmax(&a, max_size(&a), a.real_size / 10 + 22);
 		push_chunk(&a, &b, size);
 		sort_b(&a, &b);
-		up_unsorted(&a, &b);
+		up_unsorted(&a);
 	}
-	p_comment(&a, &b, 0, 0, "END");
 	free(a.stack);
 	free(b.stack);
 	return (0);

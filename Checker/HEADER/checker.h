@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 01:14:03 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 23:08:58 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/07 20:47:26 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/07 23:42:47 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include <unistd.h>
-# include <stdlib.h>
+#ifndef CHECKER_H
+# define CHECKER_H
+#define TIME 100
+#define YES_NO 1
+#include "get_next_line.h"
+#include "../printfd/HEADER/ft_printfd.h"
 
 typedef struct S_stack
 {
@@ -46,15 +48,24 @@ void    ss(t_stack *a, t_stack *b);
 void	set_stacks(t_stack *a, t_stack *b, char **av, unsigned int size);
 int		arg_check(char **av);
 int		ft_atoi(const char *str);
-int		max_size(t_stack *n);
-int		min_size(t_stack *n);
-int		monmax(t_stack *n, int max_size, unsigned int len);
-void	push_chunk(t_stack *a, t_stack *b, int min_size);
-void	sort_b(t_stack *a, t_stack *b);
-//size_t		ft_strlen(char *str);
-
-/*---------------SECURE----------------*/
-
+int		ft_strcmp(char *s1, char *s2);
 void	exit_error(char *str);
+
+/*---------------PRINT----------------*/
+
+void	print_stacks(t_stack *a, t_stack *b);
+void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_pb(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_pa(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_rra(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_rrb(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_rrr(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_ra(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_rb(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_rr(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_sa(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_sb(t_stack *a, t_stack *b, int yes_no, int time);
+void    p_ss(t_stack *a, t_stack *b, int yes_no, int time);
+void	p_comment(t_stack *a, t_stack *b, int yes_no, int time, char *str);
 
 #endif

@@ -1,8 +1,20 @@
-#include "print_stacks_cmd.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_stacks.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/07 20:51:13 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/07 21:02:32 by hrolle           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../HEADER/checker.h"
 
 void	wait_erase(unsigned int lines, int time)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	usleep(time * 1000);
@@ -16,7 +28,7 @@ void	wait_erase(unsigned int lines, int time)
 
 void	print_stacks(t_stack *a, t_stack *b)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 		ft_printfd(1, "\nA        B        \n");
@@ -38,7 +50,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 
 void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, int time)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 		ft_printfd(1, "\n#+bA          #+pB#0          \n");

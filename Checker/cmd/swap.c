@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   max_size.c                                         :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 01:43:15 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 19:55:51 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/07 21:41:30 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/07 21:41:31 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HEADER/push_swap.h"
+#include "../HEADER/checker.h"
 
-int	max_size(t_stack *n)
+void    swap(t_stack *nb)
 {
-	unsigned int	i;
-	int	max_size;
+	int tmp;
 
-	i = 0;
-	max_size = n->stack[0];
-	while (i < n->unsorted_size - 1)
-	{
-		if (n->stack[++i] > max_size)
-			max_size = n->stack[i];
-	}
-	return (max_size);
+	if (nb->current_size < 2)
+		return ;
+	tmp = nb->stack[0];
+	nb->stack[0] = nb->stack[1];
+	nb->stack[1] = tmp;
+}
+
+void    sa(t_stack *a)
+{
+	swap(a);
+	write(1, "sa\n", 3);
+}
+
+void    sb(t_stack *b)
+{
+	swap(b);
+	write(1, "sb\n", 3);
+}
+
+void    ss(t_stack *a, t_stack *b)
+{
+	swap(a);
+	swap(b);
+	write(1, "ss\n", 3);
 }
