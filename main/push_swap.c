@@ -24,15 +24,34 @@ void	up_unsorted(t_stack *a)
 	}
 }
 
+unsigned int	what_is_the_len(int ac, char **av)
+{
+	int	len;
+
+	if (ac < 3)
+		len = cmpt_arg_check(av[1]);
+	else if (!arg_check(av))
+		len = 0;
+	else
+		len = ac - 1;
+	return (len);
+}
+
 int	main(int ac, char **av)
 {
-	t_stack	a;
-	t_stack	b;
-	int		size;
+	t_stack			a;
+	t_stack			b;
+	int				size;
+	unsigned int	len;
 
-	if (!arg_check(av) || ac < 3)
+	len = what_is_the_len(ac, av);
+	if (len < 2)
 		exit_error("ERROR ARG");
-	set_stacks(&a, &b, av, ac - 1);
+	set_stacks(&a, &b, len);
+	if (ac > 2)
+		strarray_to_nbrarray(&a, av);
+	else
+		split_arg(&a, av[1]);
 	while (a.unsorted_size > 0)
 	{
 		size = monmax(&a, max_size(&a), a.real_size / 10 + 22);

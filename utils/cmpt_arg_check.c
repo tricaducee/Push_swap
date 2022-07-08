@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_chunk.c                                       :+:      :+:    :+:   */
+/*   cmpt_arg_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 04:33:07 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 05:12:04 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/08 06:02:04 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/08 06:02:10 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/push_swap.h"
 
-void	push_chunk(t_stack *a, t_stack *b, int min_size)
+unsigned int	cmpt_arg_check(char *arg)
 {
-	unsigned int	i;
-	unsigned int	len;
+	int	i;
 
 	i = 0;
-	len = a->unsorted_size;
-	while (i < len)
+	while (*arg)
 	{
-		if (a->stack[0] >= min_size)
-			pb(a, b);
-		else
-			ra(a);
+		while (*arg && *arg == ' ')
+			arg++;
+		while (*arg && (*arg == '-' || *arg == '+'))
+			arg++;
+		if (*arg && (*arg > '9' || *arg < '0'))
+			return (0);
 		i++;
+		while (*arg && (*arg <= '9' && *arg >= '0'))
+			arg++;
 	}
+	return (i);
 }

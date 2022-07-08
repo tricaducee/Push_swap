@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_stacks.c                                       :+:      :+:    :+:   */
+/*   cmpt_arg_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:44:40 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 06:53:51 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/08 06:02:04 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/08 06:24:10 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	set_stacks(t_stack *a, t_stack *b, unsigned int size)
+unsigned int	cmpt_arg_check(char *arg)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	a->real_size = size;
-	a->current_size = size;
-	a->unsorted_size = size;
-	a->sorted_size = 0;
-	b->real_size = size;
-	b->current_size = 0;
-	b->unsorted_size = 0;
-	b->sorted_size = 0;
-	a->stack = malloc(size * sizeof(int));
-	if (!a->stack)
-		exit_error("malloc failure");
-	b->stack = malloc(size * sizeof(int));
-	if (!b->stack)
-		exit_error("malloc failure");
+	while (*arg)
+	{
+		while (*arg && *arg == ' ')
+			arg++;
+		while (*arg && (*arg == '-' || *arg == '+'))
+			arg++;
+		if (*arg && (*arg > '9' || *arg < '0'))
+			return (0);
+		i++;
+		while (*arg && (*arg <= '9' && *arg >= '0'))
+			arg++;
+	}
+	return (i);
 }

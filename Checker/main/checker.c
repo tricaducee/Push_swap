@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 01:37:57 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/08 06:55:30 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,34 @@ void	exec_cmd(t_stack *a, t_stack *b, char *cmd)
 		p_rrr(a, b, YES_NO, TIME);
 }
 
+unsigned int	what_is_the_len(int ac, char **av)
+{
+	int	len;
+
+	if (ac < 3)
+		len = cmpt_arg_check(av[1]);
+	else if (!arg_check(av))
+		len = 0;
+	else
+		len = ac - 1;
+	return (len);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	a;
 	t_stack	b;
 	char	*cmd;
+	unsigned int	len;
 
-	if (!arg_check(av) || ac < 3)
+	len = what_is_the_len(ac, av);
+	if (len < 2)
 		exit_error("ERROR ARG");
-	set_stacks(&a, &b, av, ac - 1);
+	set_stacks(&a, &b, len);
+	if (ac > 2)
+		strarray_to_nbrarray(&a, av);
+	else
+		split_arg(&a, av[1]);
 	p_comment(&a, &b, 1, TIME, "STACKS");
 	cmd = get_next_line(STDIN_FILENO);
 	while (cmd)

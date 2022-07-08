@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_chunk.c                                       :+:      :+:    :+:   */
+/*   split_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 04:33:07 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 05:12:04 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/08 05:36:30 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/08 06:36:57 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/push_swap.h"
 
-void	push_chunk(t_stack *a, t_stack *b, int min_size)
+void	split_arg(t_stack *n, char *arg)
 {
-	unsigned int	i;
-	unsigned int	len;
+	int	i;
 
 	i = 0;
-	len = a->unsorted_size;
-	while (i < len)
+	while (*arg)
 	{
-		if (a->stack[0] >= min_size)
-			pb(a, b);
-		else
-			ra(a);
-		i++;
+		while (*arg && *arg == ' ')
+			arg++;
+		n->stack[i++] = ft_atoi(arg);
+		while (*arg && *arg != ' ')
+			arg++;
 	}
 }

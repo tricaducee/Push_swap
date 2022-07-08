@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_stacks.c                                       :+:      :+:    :+:   */
+/*   split_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:44:40 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 06:53:51 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/08 05:36:30 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/08 06:37:50 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	set_stacks(t_stack *a, t_stack *b, unsigned int size)
+void	split_arg(t_stack *n, char *arg)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	a->real_size = size;
-	a->current_size = size;
-	a->unsorted_size = size;
-	a->sorted_size = 0;
-	b->real_size = size;
-	b->current_size = 0;
-	b->unsorted_size = 0;
-	b->sorted_size = 0;
-	a->stack = malloc(size * sizeof(int));
-	if (!a->stack)
-		exit_error("malloc failure");
-	b->stack = malloc(size * sizeof(int));
-	if (!b->stack)
-		exit_error("malloc failure");
+	while (*arg)
+	{
+		while (*arg && *arg == ' ')
+			arg++;
+		n->stack[i++] = ft_atoi(arg);
+		while (*arg && *arg != ' ')
+			arg++;
+	}
 }

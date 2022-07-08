@@ -1,6 +1,6 @@
 #include "../HEADER/push_swap.h"
 
-void	set_stacks(t_stack *a, t_stack *b, char **av, unsigned int size)
+void	set_stacks(t_stack *a, t_stack *b, unsigned int size)
 {
 	unsigned int	i;
 
@@ -17,9 +17,4 @@ void	set_stacks(t_stack *a, t_stack *b, char **av, unsigned int size)
 	b->stack = malloc(size * sizeof(int));
 	if (!b->stack)
 		exit_error("malloc failure");
-	while (i < size)
-	{
-		a->stack[i] = ft_atoi(av[i + 1]);
-		i++;
-	}
 }

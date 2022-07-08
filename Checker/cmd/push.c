@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:41:06 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 02:41:47 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/08 04:38:16 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void    push(t_stack *a, t_stack *b)
 		i++;
 	}
 	a->current_size -= 1;
-	a->unsorted_size -= 1;
 }
 
 void    pb(t_stack *a, t_stack *b)
 {
 	push(a, b);
+	a->unsorted_size -= 1;
 	write(1, "pb\n", 3);
 }
 

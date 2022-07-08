@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_chunk.c                                       :+:      :+:    :+:   */
+/*   strarray_to_nbrarray.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 04:33:07 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 05:12:04 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/08 06:26:26 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/08 06:38:17 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/push_swap.h"
 
-void	push_chunk(t_stack *a, t_stack *b, int min_size)
+void	strarray_to_nbrarray(t_stack *n, char **av)
 {
 	unsigned int	i;
-	unsigned int	len;
 
 	i = 0;
-	len = a->unsorted_size;
-	while (i < len)
+	while (i < n->real_size)
 	{
-		if (a->stack[0] >= min_size)
-			pb(a, b);
-		else
-			ra(a);
+		n->stack[i] = ft_atoi(av[i + 1]);
 		i++;
 	}
 }

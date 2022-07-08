@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 05:12:23 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/08 05:12:24 by hrolle           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../HEADER/push_swap.h"
 
 void    push(t_stack *a, t_stack *b)
@@ -24,12 +36,12 @@ void    push(t_stack *a, t_stack *b)
 		i++;
 	}
 	a->current_size -= 1;
-	a->unsorted_size -= 1;
 }
 
 void    pb(t_stack *a, t_stack *b)
 {
 	push(a, b);
+	a->unsorted_size -= 1;
 	write(1, "pb\n", 3);
 }
 
