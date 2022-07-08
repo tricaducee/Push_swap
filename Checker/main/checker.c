@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 21:43:48 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/08 01:37:57 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	main(int ac, char **av)
 		cmd = get_next_line(STDIN_FILENO);
 	}
 	p_comment(&a, &b, 0, 0, "END");
+	sorted_checker(&a);
 	free(a.stack);
 	free(b.stack);
 	return (0);

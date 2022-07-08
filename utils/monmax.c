@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:54:48 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 21:33:42 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/08 01:10:03 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	monmax(t_stack *n, int max_size, unsigned int len)
 		return (min_size(n));
 	i = 0;
 	tmp = -2147483648;
-	//ft_printfd(1, "%d\n", n->unsorted_size);
-	//ft_printfd(1, "%d\n", max_size);
 	while (i < len - 1)
 	{
 		j = 0;

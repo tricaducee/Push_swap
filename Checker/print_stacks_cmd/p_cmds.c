@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:50:59 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 21:02:24 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/08 02:41:37 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void    p_pb(t_stack *a, t_stack *b, int yes_no, int time)
 void    p_pa(t_stack *a, t_stack *b, int yes_no, int time)
 {
 	push(b, a);
+	a->sorted_size += 1;
 	ft_printfd(1, "#+gPA         :#0\n");
 	w_print_stacks(a, b, yes_no, time);
 }

@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:51:13 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 21:02:32 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/08 04:09:15 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,30 @@ void	wait_erase(unsigned int lines, int time)
 		ft_printfd(1, "\033[A");
 		i++;
 	}
+}
+
+void	prog_bar(int prog)
+{
+	int	i;
+
+	i = 0;
+	while (i < 10)
+	{
+		if (i < prog)
+			ft_printfd(1, "#G #0");
+		else
+			ft_printfd(1, "#B #0");
+		i++;
+	}
+}
+
+void	print_percent(t_stack *n)
+{
+	int		percent;
+
+	percent = ((float)n->sorted_size / (float)n->real_size) * 100;
+	prog_bar(percent / 10);
+	ft_printfd(1, "#/+g %d%%#0              \n", percent);
 }
 
 void	print_stacks(t_stack *a, t_stack *b)
@@ -67,7 +91,8 @@ void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, int time)
 			ft_printfd(1, "           \n");
 		i++;
 	}
-	ft_printfd(1, "-          -          \n\n");
+	ft_printfd(1, "-          -          \n");
+	print_percent(a);
 	if (yes_no)
 		wait_erase(a->real_size + 6, time);
 }

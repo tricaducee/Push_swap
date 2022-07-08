@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:47:26 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 23:42:47 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/08 02:38:01 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct S_stack
 	unsigned int    real_size;
 	unsigned int    current_size;
 	unsigned int    unsorted_size;
+	unsigned int    sorted_size;
 }                   t_stack;
 
 /*----------------CMD-----------------*/
@@ -50,6 +51,7 @@ int		arg_check(char **av);
 int		ft_atoi(const char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	exit_error(char *str);
+int		sorted_checker(t_stack *n);
 
 /*---------------PRINT----------------*/
 
