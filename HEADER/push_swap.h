@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:14:03 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 06:29:21 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/09 20:48:36 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		max_size(t_stack *n);
 int		min_size(t_stack *n);
 int		monmax(t_stack *n, int max_size, unsigned int len);
 void	push_chunk(t_stack *a, t_stack *b, int min_size);
+void	push_chunk_min(t_stack *a, t_stack *b, int max_size);
 unsigned int	cmpt_arg_check(char *arg);
 void	split_arg(t_stack *n, char *arg);
 void	sort_b(t_stack *a, t_stack *b);
@@ -59,6 +60,7 @@ int		sorted_checker(t_stack *n);
 int		i_max_size(t_stack *n);
 int		i_min_size(t_stack *n);
 void	five_sort(t_stack *a, t_stack *b);
+int		monmin(t_stack *n, int min_size, unsigned int len);
 //size_t		ft_strlen(char *str);
 
 /*---------------SECURE----------------*/

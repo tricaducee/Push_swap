@@ -12,18 +12,6 @@
 
 #include "../HEADER/push_swap.h"
 
-void	up_unsorted(t_stack *a)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (i < a->unsorted_size)
-	{
-		rra(a);
-		i++;
-	}
-}
-
 unsigned int	what_is_the_len(int ac, char **av)
 {
 	int	len;
@@ -81,13 +69,12 @@ int	main(int ac, char **av)
 		free(b.stack);
 		return (0);
 	}
-	while (a.unsorted_size > 0)
+	while (a.current_size > 0)
 	{
-		size = monmax(&a, max_size(&a), a.real_size / 7 + 10);
+		size = monmax(&a, max_size(&a), a.real_size / 20 + 5);
 		push_chunk(&a, &b, size);
-		sort_b(&a, &b);
-		up_unsorted(&a);
 	}
+	sort_b(&a, &b);
 	free(a.stack);
 	free(b.stack);
 	return (0);

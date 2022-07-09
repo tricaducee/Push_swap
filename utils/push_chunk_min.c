@@ -1,63 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_chunk.c                                       :+:      :+:    :+:   */
+/*   push_chunk_min.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 04:33:07 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/09 20:50:55 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/09 20:47:19 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/09 20:48:44 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/push_swap.h"
 
-// void	push_chunk(t_stack *a, t_stack *b, int min_size)
-// {
-// 	unsigned int	i;
-// 	unsigned int	len;
-// 	unsigned int	max_len;
-
-// 	i = 0;
-// 	len = a->unsorted_size;
-// 	while (i < len)
-// 	{
-// 		max_len = i_next_nbr(a, min_size);
-// 		if (a->stack[0] >= min_size)
-// 			pb(a, b);
-// 		else
-// 			ra(a);
-// 		i++;
-// 	}
-// }
-
-unsigned int	i_next_nbr(t_stack *n, int min_size)
+unsigned int	i_next_nbr_min(t_stack *n, int max_size)
 {
 	unsigned int	i;
 	unsigned int	j;
 
 	i = 0;
 	j = n->current_size;
-	while (i < n->current_size && n->stack[i] < min_size)
+	while (i < n->current_size && n->stack[i] > max_size)
 		i++;
-	while (j > 0 && n->stack[j] < min_size)
+	while (j > 0 && n->stack[j] > max_size)
 		j--;
 	if (i <= n->current_size - j)
 		return (i);
 	return (j);
 }
 
-#include <stdio.h>
-
-void	push_chunk(t_stack *a, t_stack *b, int min_size)
+void	push_chunk_min(t_stack *a, t_stack *b, int max_size)
 {
 	unsigned int	i;
 	unsigned int	next_i;
 
 	while (a->current_size)
 	{
-		next_i = i_next_nbr(a, min_size);
-		if (a->stack[next_i] < min_size)
+		next_i = i_next_nbr_min(a, max_size);
+		if (a->stack[next_i] > max_size)
 			return ;
 		i = 0;
 		if (next_i > a->current_size / 2)

@@ -6,13 +6,13 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:47:26 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 06:54:20 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/09 17:36:09 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
-#define TIME 100
+#define TIME 25
 #define YES_NO 1
 #include "get_next_line.h"
 #include "../printfd/HEADER/ft_printfd.h"
