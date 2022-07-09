@@ -51,7 +51,7 @@ int		arg_check(char **av);
 int		ft_atoi(const char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	exit_error(char *str);
-int		sorted_checker(t_stack *n);
+int		sorted_checker(t_stack *a, t_stack *b);
 unsigned int	cmpt_arg_check(char *arg);
 void	split_arg(t_stack *n, char *arg);
 void	strarray_to_nbrarray(t_stack *n, char **av);
@@ -71,6 +71,6 @@ void    p_rr(t_stack *a, t_stack *b, int yes_no, int time);
 void    p_sa(t_stack *a, t_stack *b, int yes_no, int time);
 void    p_sb(t_stack *a, t_stack *b, int yes_no, int time);
 void    p_ss(t_stack *a, t_stack *b, int yes_no, int time);
-void	p_comment(t_stack *a, t_stack *b, int yes_no, int time, char *str);
+void	p_comment(t_stack *a, t_stack *b, int yes_no, char *str);
 
 #endif

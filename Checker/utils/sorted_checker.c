@@ -32,20 +32,24 @@ void	print_ko(void)
 	ft_printfd(1, "KO   OK.  'KOKOKO'#0\n\n\n");
 }
 
-int	sorted_checker(t_stack *n)
+int	sorted_checker(t_stack *a, t_stack *b)
 {
 	unsigned int	i;
 
 	i = 0;
-	while (i < n->current_size - 1)
+	while (i < a->current_size - 1)
 	{
-		if (n->stack[i] > n->stack[i + 1])
+		if (a->stack[i] > a->stack[i + 1])
 		{
+			p_comment(a, b, 0, "FAIL");
+			ft_printfd(1, "\r\033[A                         \r");
 			print_ko();
 			return (0);
 		}
 		i++;
 	}
+	p_comment(a, b, 0, "SORTED");
+	ft_printfd(1, "\r\033[A                         \r");
 	print_ok();
 	return (1);
 }

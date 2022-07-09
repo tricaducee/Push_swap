@@ -54,6 +54,11 @@ unsigned int	cmpt_arg_check(char *arg);
 void	split_arg(t_stack *n, char *arg);
 void	sort_b(t_stack *a, t_stack *b);
 void	strarray_to_nbrarray(t_stack *n, char **av);
+void	three_sort(t_stack *n);
+int		sorted_checker(t_stack *n);
+int		i_max_size(t_stack *n);
+int		i_min_size(t_stack *n);
+void	five_sort(t_stack *a, t_stack *b);
 //size_t		ft_strlen(char *str);
 
 /*---------------SECURE----------------*/

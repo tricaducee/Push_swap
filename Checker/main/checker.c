@@ -66,7 +66,7 @@ int	main(int ac, char **av)
 		strarray_to_nbrarray(&a, av);
 	else
 		split_arg(&a, av[1]);
-	p_comment(&a, &b, 1, TIME, "STACKS");
+	p_comment(&a, &b, 1, "STACKS");
 	cmd = get_next_line(STDIN_FILENO);
 	while (cmd)
 	{
@@ -74,8 +74,7 @@ int	main(int ac, char **av)
 		free(cmd);
 		cmd = get_next_line(STDIN_FILENO);
 	}
-	p_comment(&a, &b, 0, 0, "END");
-	sorted_checker(&a);
+	sorted_checker(&a, &b);
 	free(a.stack);
 	free(b.stack);
 	return (0);

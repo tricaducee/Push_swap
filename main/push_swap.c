@@ -48,13 +48,42 @@ int	main(int ac, char **av)
 	if (len < 2)
 		exit_error("ERROR ARG");
 	set_stacks(&a, &b, len);
+	//len = a.real_size / 12;
 	if (ac > 2)
 		strarray_to_nbrarray(&a, av);
 	else
 		split_arg(&a, av[1]);
+	if (sorted_checker(&a))
+	{
+		free(a.stack);
+		free(b.stack);
+		return (0);
+	}
+	if (len == 2)
+	{
+		if (a.stack[0] > a.stack[1])
+			sa(&a);
+		free(a.stack);
+		free(b.stack);
+		return (0);
+	}
+	if (len == 3)
+	{
+		three_sort(&a);
+		free(a.stack);
+		free(b.stack);
+		return (0);
+	}
+	if (len < 6)
+	{
+		five_sort(&a, &b);
+		free(a.stack);
+		free(b.stack);
+		return (0);
+	}
 	while (a.unsorted_size > 0)
 	{
-		size = monmax(&a, max_size(&a), a.real_size / 10 + 22);
+		size = monmax(&a, max_size(&a), a.real_size / 7 + 10);
 		push_chunk(&a, &b, size);
 		sort_b(&a, &b);
 		up_unsorted(&a);

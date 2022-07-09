@@ -94,8 +94,8 @@ void    p_ss(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void	p_comment(t_stack *a, t_stack *b, int yes_no, int time, char *str)
+void	p_comment(t_stack *a, t_stack *b, int yes_no, char *str)
 {
 	ft_printfd(1, "#+g%-14.14s:#0\n", str);
-	w_print_stacks(a, b, yes_no, time);
+	w_print_stacks(a, b, yes_no, TIME);
 }
