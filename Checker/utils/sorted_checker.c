@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorted_check.c                                     :+:      :+:    :+:   */
+/*   sorted_checker.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 00:54:56 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 02:09:30 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/09 21:13:35 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	sorted_checker(t_stack *a, t_stack *b)
 	i = 0;
 	while (i < a->current_size - 1)
 	{
-		if (a->stack[i] > a->stack[i + 1])
+		if (b->current_size || a->stack[i] > a->stack[i + 1])
 		{
 			p_comment(a, b, 0, "FAIL");
 			ft_printfd(1, "\r\033[A                         \r");
