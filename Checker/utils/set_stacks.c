@@ -21,6 +21,7 @@ void	set_stacks(t_stack *a, t_stack *b, unsigned int size)
 	a->current_size = size;
 	a->unsorted_size = size;
 	a->sorted_size = 0;
+	a->cmds = 0;
 	b->real_size = size;
 	b->current_size = 0;
 	b->unsorted_size = 0;

@@ -69,12 +69,15 @@ int	main(int ac, char **av)
 		free(b.stack);
 		return (0);
 	}
-	while (a.current_size > 0)
+	size = min_size(&a);//
+	while (a.unsorted_size > 0)
 	{
-		size = monmax(&a, max_size(&a), a.real_size / 20 + 5);
-		push_chunk(&a, &b, size);
+		size = monmin(&a, size, a.real_size / 20 + 5);
+		//size = monmin(&a, min_size(&a), a.real_size / 20 + 5);
+		push_chunk_min(&a, &b, size);
+		sort_b(&a, &b);
 	}
-	sort_b(&a, &b);
+	//sort_b(&a, &b);
 	free(a.stack);
 	free(b.stack);
 	return (0);

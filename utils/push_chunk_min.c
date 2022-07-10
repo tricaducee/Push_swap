@@ -47,7 +47,7 @@ void	push_chunk_min(t_stack *a, t_stack *b, int max_size)
 				i++;
 			}
 		}
-		else
+		else if (next_i)
 		{
 			while (i < next_i)
 			{

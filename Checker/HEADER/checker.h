@@ -24,6 +24,7 @@ typedef struct S_stack
 	unsigned int    current_size;
 	unsigned int    unsorted_size;
 	unsigned int    sorted_size;
+	unsigned int	cmds;
 }                   t_stack;
 
 /*----------------CMD-----------------*/

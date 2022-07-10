@@ -47,7 +47,7 @@ void	print_percent(t_stack *n)
 
 	percent = ((float)n->sorted_size / (float)n->real_size) * 100;
 	prog_bar(percent / 10);
-	ft_printfd(1, "#/+g %3d%%#0           \n", percent);
+	ft_printfd(1, "#/+g %3d%%#0           ", percent);
 }
 
 void	print_stacks(t_stack *a, t_stack *b)
@@ -92,7 +92,8 @@ void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, int time)
 		i++;
 	}
 	ft_printfd(1, "-             -          \n");
+	ft_printfd(1, "#/b%-11ucmds#0\n\n", a->cmds);
 	print_percent(a);
 	if (yes_no)
-		wait_erase(a->real_size + 6, time);
+		wait_erase(a->real_size + 7, time);
 }

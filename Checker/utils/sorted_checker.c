@@ -42,14 +42,14 @@ int	sorted_checker(t_stack *a, t_stack *b)
 		if (b->current_size || a->stack[i] > a->stack[i + 1])
 		{
 			p_comment(a, b, 0, "FAIL");
-			ft_printfd(1, "\r\033[A                         \r");
+			ft_printfd(1, "\r\033[A");
 			print_ko();
 			return (0);
 		}
 		i++;
 	}
 	p_comment(a, b, 0, "SORTED");
-	ft_printfd(1, "\r\033[A                         \r");
+	ft_printfd(1, "\r\033[A");
 	print_ok();
 	return (1);
 }
