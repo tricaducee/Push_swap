@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:47:26 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/11 02:56:58 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/11 03:27:47 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CHECKER_H
 #define TIME 25
 #define YES_NO 1
-#define MAX_U_INT 4294967295
+#define TOP 50
 #include "get_next_line.h"
 #include "../printfd/HEADER/ft_printfd.h"
 
@@ -61,7 +61,7 @@ void	ft_sleep(unsigned int time);
 
 /*---------------PRINT----------------*/
 
-void	print_stacks(t_stack *a, t_stack *b);
+void	print_stacks(t_stack *a, t_stack *b, unsigned int size);
 void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, unsigned int time);
 void    p_pb(t_stack *a, t_stack *b, int yes_no, unsigned int time);
 void    p_pa(t_stack *a, t_stack *b, int yes_no, unsigned int time);
