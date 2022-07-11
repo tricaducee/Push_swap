@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:47:26 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/09 17:36:09 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/11 02:56:58 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CHECKER_H
 #define TIME 25
 #define YES_NO 1
+#define MAX_U_INT 4294967295
 #include "get_next_line.h"
 #include "../printfd/HEADER/ft_printfd.h"
 
@@ -56,22 +57,23 @@ int		sorted_checker(t_stack *a, t_stack *b);
 unsigned int	cmpt_arg_check(char *arg);
 void	split_arg(t_stack *n, char *arg);
 void	strarray_to_nbrarray(t_stack *n, char **av);
+void	ft_sleep(unsigned int time);
 
 /*---------------PRINT----------------*/
 
 void	print_stacks(t_stack *a, t_stack *b);
-void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_pb(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_pa(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_rra(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_rrb(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_rrr(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_ra(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_rb(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_rr(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_sa(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_sb(t_stack *a, t_stack *b, int yes_no, int time);
-void    p_ss(t_stack *a, t_stack *b, int yes_no, int time);
+void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_pb(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_pa(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_rra(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_rrb(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_rrr(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_ra(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_rb(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_rr(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_sa(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_sb(t_stack *a, t_stack *b, int yes_no, unsigned int time);
+void    p_ss(t_stack *a, t_stack *b, int yes_no, unsigned int time);
 void	p_comment(t_stack *a, t_stack *b, int yes_no, char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:41:06 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 04:38:16 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/11 03:09:35 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ void    push(t_stack *a, t_stack *b)
 
 	if (!a->current_size)
 		return ;
-	if (b->current_size)
+	i = b->current_size;
+	while (i)
 	{
-		i = b->current_size;
-		while (i)
-		{
-			i--;
-			b->stack[i + 1] = b->stack[i];
-		}
+		i--;
+		b->stack[i + 1] = b->stack[i];
 	}
 	b->stack[0] = a->stack[0];
 	b->current_size += 1;

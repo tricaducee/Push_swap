@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 06:55:30 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/11 01:37:19 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	main(int ac, char **av)
 	char	*cmd;
 	unsigned int	len;
 
+	if (ac < 2)
+		return (0);
 	len = what_is_the_len(ac, av);
 	if (len < 2)
 		exit_error("ERROR ARG");

@@ -25,13 +25,17 @@ unsigned int	what_is_the_len(int ac, char **av)
 	return (len);
 }
 
+#include <stdio.h>
+
 int	main(int ac, char **av)
 {
 	t_stack			a;
 	t_stack			b;
-	int				size;
+	//int				size;
 	unsigned int	len;
 
+	if (ac < 2)
+		return (0);
 	len = what_is_the_len(ac, av);
 	if (len < 2)
 		exit_error("ERROR ARG");
@@ -69,15 +73,15 @@ int	main(int ac, char **av)
 		free(b.stack);
 		return (0);
 	}
-	size = min_size(&a);//
-	while (a.unsorted_size > 0)
+
+	while (a.current_size > 0)
 	{
-		size = monmin(&a, size, a.real_size / 20 + 5);
-		//size = monmin(&a, min_size(&a), a.real_size / 20 + 5);
-		push_chunk_min(&a, &b, size);
-		sort_b(&a, &b);
+		//size = monmin(&a, size, a.real_size / 20 + 5);
+		//size = ;
+		push_chunk(&a, &b, monmin(&a, min_size(&a), (a.current_size / 6 + 32) / 2));
+		//sort_b(&a, &b);
 	}
-	//sort_b(&a, &b);
+	sort_b(&a, &b);
 	free(a.stack);
 	free(b.stack);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 20:47:19 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/09 20:48:44 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/10 17:26:07 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ unsigned int	i_next_nbr_min(t_stack *n, int max_size)
 {
 	unsigned int	i;
 	unsigned int	j;
+	unsigned int	mid;
+
 
 	i = 0;
-	j = n->current_size;
-	while (i < n->current_size && n->stack[i] > max_size)
+	j = n->current_size - 1;
+	mid = n->current_size / 2;
+	while (i <= mid && n->stack[i] > max_size)
 		i++;
-	while (j > 0 && n->stack[j] > max_size)
+	while (j && j >= mid && n->stack[j] > max_size)
 		j--;
 	if (i <= n->current_size - j)
 		return (i);
@@ -47,7 +50,7 @@ void	push_chunk_min(t_stack *a, t_stack *b, int max_size)
 				i++;
 			}
 		}
-		else if (next_i)
+		else
 		{
 			while (i < next_i)
 			{

@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   monmin.c                                           :+:      :+:    :+:   */
+/*   ft_sleep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 01:54:48 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/10 17:25:39 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/11 01:49:16 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/11 02:27:38 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../HEADER/push_swap.h"
+#include "../HEADER/checker.h"
 
-int	monmin(t_stack *n, int min_size, unsigned int len)
+void	ft_sleep(unsigned int time)
 {
 	unsigned int	i;
-	unsigned int	j;
-	int				tmp;
 
-	if (len >= n->current_size)
-		return (max_size(n));
-	i = 0;
-	tmp = 2147483647;
-	while (i < len - 1)
+	while (time--)
 	{
-		j = 0;
-		while (j < n->unsorted_size)
-		{
-			if (n->stack[j] <= tmp && n->stack[j] > min_size)
-				tmp = n->stack[j];
-			j++;
-		}
-		min_size = tmp;
-		tmp = 2147483647;
-		i++;
+		i = 0;
+		while (i < 800000)
+			i++;
 	}
-	return (min_size);
 }

@@ -6,18 +6,18 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:51:13 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 05:22:26 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/11 02:20:37 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	wait_erase(unsigned int lines, int time)
+void	wait_erase(unsigned int lines, unsigned int time)
 {
 	unsigned int	i;
 
 	i = 0;
-	usleep(time * 1000);
+	ft_sleep(time);
 	ft_printfd(1, "\r");
 	while (i < lines)
 	{
@@ -72,7 +72,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 	ft_printfd(1, "%-8c %-8c \n\n", '-', '-');
 }
 
-void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, int time)
+void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	unsigned int	i;
 

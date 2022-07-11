@@ -6,13 +6,13 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:50:59 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 05:25:59 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/11 03:09:53 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void    p_pb(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_pb(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	push(a, b);
@@ -20,7 +20,7 @@ void    p_pb(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_pa(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_pa(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	push(b, a);
@@ -30,7 +30,7 @@ void    p_pa(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_rra(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_rra(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	reverse_rotate(a);
@@ -38,7 +38,7 @@ void    p_rra(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_rrb(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_rrb(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	reverse_rotate(b);
@@ -46,7 +46,7 @@ void    p_rrb(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_rrr(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_rrr(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	reverse_rotate(a);
@@ -55,7 +55,7 @@ void    p_rrr(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_ra(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_ra(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	rotate(a);
@@ -63,7 +63,7 @@ void    p_ra(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_rb(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_rb(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	rotate(b);
@@ -71,7 +71,7 @@ void    p_rb(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_rr(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_rr(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	rotate(a);
@@ -80,7 +80,7 @@ void    p_rr(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_sa(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_sa(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	swap(a);
@@ -88,7 +88,7 @@ void    p_sa(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_sb(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_sb(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	swap(b);
@@ -96,7 +96,7 @@ void    p_sb(t_stack *a, t_stack *b, int yes_no, int time)
 	w_print_stacks(a, b, yes_no, time);
 }
 
-void    p_ss(t_stack *a, t_stack *b, int yes_no, int time)
+void    p_ss(t_stack *a, t_stack *b, int yes_no, unsigned int time)
 {
 	a->cmds += 1;
 	swap(a);

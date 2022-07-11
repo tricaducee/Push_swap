@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:30:15 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 23:41:33 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/10 22:37:53 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sort_b(t_stack *a, t_stack *b)
 				i++;
 			}
 		}
-		else if (max_i)
+		else
 		{
 			while (i < max_i)
 			{
