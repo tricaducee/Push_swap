@@ -53,14 +53,16 @@ unsigned int	what_is_the_len(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_stack	a;
-	t_stack	b;
-	char	*cmd;
+	t_stack			a;
+	t_stack			b;
+	t_option		arg;
+	char			*cmd;
 	unsigned int	len;
 
 	if (ac < 2)
 		return (0);
-	len = what_is_the_len(ac, av);
+	set_option(&arg);
+	len = what_is_the_len(ac, av, &arg);
 	if (len < 2)
 		exit_error("ERROR ARG");
 	set_stacks(&a, &b, len);
@@ -68,6 +70,7 @@ int	main(int ac, char **av)
 		strarray_to_nbrarray(&a, av);
 	else
 		split_arg(&a, av[1]);
+	ft_printfd(1, "\033[?25l");
 	p_comment(&a, &b, 1, "STACKS");
 	cmd = get_next_line(STDIN_FILENO);
 	while (cmd)
@@ -77,6 +80,7 @@ int	main(int ac, char **av)
 		cmd = get_next_line(STDIN_FILENO);
 	}
 	sorted_checker(&a, &b);
+	ft_printfd(1, "\033[?25h");
 	free(a.stack);
 	free(b.stack);
 	return (0);

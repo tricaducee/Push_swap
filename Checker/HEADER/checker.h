@@ -12,7 +12,7 @@
 
 #ifndef CHECKER_H
 # define CHECKER_H
-#define TIME 25
+#define TIME 250
 #define YES_NO 1
 #define TOP 50
 #include "get_next_line.h"
@@ -27,6 +27,15 @@ typedef struct S_stack
 	unsigned int    sorted_size;
 	unsigned int	cmds;
 }                   t_stack;
+
+typedef struct S_option
+{
+	unsigned int    top;
+	unsigned int    time;
+	unsigned int    cmds;
+	unsigned int    percent;
+	unsigned int	full;
+}                   t_option;
 
 /*----------------CMD-----------------*/
 
@@ -58,6 +67,7 @@ unsigned int	cmpt_arg_check(char *arg);
 void	split_arg(t_stack *n, char *arg);
 void	strarray_to_nbrarray(t_stack *n, char **av);
 void	ft_sleep(unsigned int time);
+void	set_option(t_arg *arg);
 
 /*---------------PRINT----------------*/
 
