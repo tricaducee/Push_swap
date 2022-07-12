@@ -75,12 +75,7 @@ int	main(int ac, char **av)
 	}
 
 	while (a.current_size > 0)
-	{
-		//size = monmin(&a, size, a.real_size / 20 + 5);
-		//size = ;
 		push_chunk(&a, &b, monmin(&a, min_size(&a), (a.current_size / 6 + 32) / 2));
-		//sort_b(&a, &b);
-	}
 	sort_b(&a, &b);
 	free(a.stack);
 	free(b.stack);

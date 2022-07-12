@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:47:26 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/11 03:27:47 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/12 12:30:56 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct S_option
 	unsigned int    cmds;
 	unsigned int    percent;
 	unsigned int	full;
+	unsigned int	n_arg;
 }                   t_option;
 
 /*----------------CMD-----------------*/
@@ -67,7 +68,7 @@ unsigned int	cmpt_arg_check(char *arg);
 void	split_arg(t_stack *n, char *arg);
 void	strarray_to_nbrarray(t_stack *n, char **av);
 void	ft_sleep(unsigned int time);
-void	set_option(t_arg *arg);
+void	set_option(t_option *arg);
 
 /*---------------PRINT----------------*/
 

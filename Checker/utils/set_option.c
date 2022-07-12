@@ -7,4 +7,5 @@ void	set_option(t_option *arg)
 	arg->cmds = 0;
 	arg->percent = 0;
 	arg->full = 0;
+	arg->n_arg = 0;
 }
