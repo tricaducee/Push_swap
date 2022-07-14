@@ -94,6 +94,23 @@ unsigned int	option_to_i(char *str)
 	return (nbr);
 }
 
+int	pcs_multi_option(char *option)
+{
+	while (*option)
+	{
+		if (*option == 'p')
+			arg->percent = 1;
+		else if (*option == 'c')
+			arg->cmds = 1;
+		else if (*option == 's')
+			arg->stacks = 1;
+		else
+			return (1);
+		option++;
+	}
+	return (0);
+}
+
 int	add_option(char	*option, t_option *arg)
 {
 	if (invalid_option(option))
@@ -110,19 +127,28 @@ int	add_option(char	*option, t_option *arg)
 			ft_printfd(1, "top\n");
 		return (0);
 	}
-	else if (option_cmp(option, "percent") || option_cmp(option, "p"))
+	else if (option_cmp(option, "percent"))
 	{
 		arg->percent = 1;
 		return (0);
 	}
-	else if (option_cmp(option, "cmds") || option_cmp(option, "c"))
+	else if (option_cmp(option, "cmds"))
 	{
 		arg->cmds = 1;
 		return (0);
 	}
+	else if (option_cmp(option, "stacks"))
+	{
+		arg->stacks = 1;
+		return (0);
+	}
+	else if (*option == 'p' || *option == 'c' || *option == 's')
+		return (pcs_multi_option(option));
 	else if (option_cmp(option, "full") || option_cmp(option, "f"))
 	{
-		arg->full = 1;
+		arg->stacks = 1;
+		arg->percent = 1;
+		arg->cmds = 1;
 		return (0);
 	}
 	return (1);
@@ -158,12 +184,12 @@ int	main(int ac, char **av)
 	cmd = check_option(av, &arg);
 	if (cmd)
 	{
-		ft_printfd(2, "Invalid option : %s", cmd);
+		ft_printfd(2, "Invalid option : %s\n", cmd);
 		return (1);
 	}
 	ft_printfd(1, "arg.time = %u\n", arg.time);
 	ft_printfd(1, "arg.top = %u\n", arg.top);
-	ft_printfd(1, "arg.full = %u\n", arg.full);
+	ft_printfd(1, "arg.stacks = %u\n", arg.stacks);
 	ft_printfd(1, "arg.percent = %u\n", arg.percent);
 	ft_printfd(1, "arg.cmds = %u\n", arg.cmds);
 	//if (ac > 2)
