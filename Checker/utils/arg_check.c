@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:59:28 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 20:59:31 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 11:37:18 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	arg_check(char **av)
 	while (av[i])
 	{
 		j = 0;
-		while (av[i][j] == ' ' || av[i][j] == '-' || av[i][j] == '+')
+		if (av[i][j] == '-')
+			break ;
+		while (av[i][j] == ' ' || av[i][j] == '+')
 			j++;
 		while (av[i][j])
 		{

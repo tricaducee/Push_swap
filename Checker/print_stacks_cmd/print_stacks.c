@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:51:13 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/11 03:27:27 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 14:26:01 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	prog_bar(int prog)
 	int	i;
 
 	i = 0;
+	ft_printfd(1, "\n");
 	while (i < 10)
 	{
 		if (i < prog)
@@ -47,7 +48,7 @@ void	print_percent(t_stack *n)
 
 	percent = ((float)n->sorted_size / (float)n->real_size) * 100;
 	prog_bar(percent / 10);
-	ft_printfd(1, "#/+g %3d%%#0           ", percent);
+	ft_printfd(1, "#/+g %3d%%#0           \n", percent);
 }
 
 void	print_stacks(t_stack *a, t_stack *b, unsigned int size)
@@ -70,19 +71,50 @@ void	print_stacks(t_stack *a, t_stack *b, unsigned int size)
 		i++;
 	}
 	ft_printfd(1, "-             -          \n");
-	ft_printfd(1, "#/b%-11ucmds#0\n\n", a->cmds);
 }
 
-void	w_print_stacks(t_stack *a, t_stack *b, int yes_no, unsigned int time)
+void	w_print_stacks(t_stack *a, t_stack *b, t_option *arg)
 {
 	unsigned int	size;
 
-	if (a->real_size > TOP)
-		size = TOP;
+	if (arg->stacks)
+	{
+		if (a->real_size > arg->top)
+			size = arg->top;
+		else
+			size = a->real_size;
+		print_stacks(a, b, size);
+		size += 5;
+	}
 	else
-		size = a->real_size;
-	print_stacks(a, b, size);
-	print_percent(a);
-	if (yes_no)
-		wait_erase(size + 7, time);
+		size = 0;
+	if (arg->cmds)
+	{
+		ft_printfd(1, "#/b%-11ucmds#0\n", a->cmds);
+		size += 1;
+	}
+	if (arg->percent)
+	{
+		print_percent(a);
+		size += 2;
+	}
+	wait_erase(size, arg->time);
+}
+
+void	f_print_stacks(t_stack *a, t_stack *b, t_option *arg)
+{
+	unsigned int	size;
+
+	if (arg->stacks)
+	{
+		if (a->real_size > arg->top)
+			size = arg->top;
+		else
+			size = a->real_size;
+		print_stacks(a, b, size);
+	}
+	if (arg->cmds)
+		ft_printfd(1, "#/b%-11ucmds#0\n", a->cmds);
+	if (arg->percent)
+		print_percent(a);
 }

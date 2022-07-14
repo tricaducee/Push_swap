@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 20:51:58 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/09 20:52:01 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 15:29:31 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	min_size(t_stack *n)
 {
 	unsigned int	i;
-	int	min_size;
+	int				min_size;
 
 	i = 0;
 	min_size = n->stack[0];

@@ -5,75 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 04:33:07 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/10 21:41:39 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/09 20:47:19 by hrolle            #+#    #+#             */
+/*   Updated: 2022/07/14 17:23:00 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/push_swap.h"
 
-void	push_chunk(t_stack *a, t_stack *b, int min_size)
+unsigned int	i_next_nbr_min(t_stack *n, int max_size)
 {
 	unsigned int	i;
-	unsigned int	len;
+	unsigned int	j;
+	unsigned int	mid;
 
 	i = 0;
-	len = a->unsorted_size;
-	while (i < len)
-	{
-		if (a->stack[0] <= min_size)
-			pb(a, b);
-		else
-			ra(a);
+	j = n->current_size - 1;
+	mid = n->current_size / 2;
+	while (i <= mid && n->stack[i] > max_size)
 		i++;
-	}
+	while (j && j >= mid && n->stack[j] > max_size)
+		j--;
+	if (i <= n->current_size - j)
+		return (i);
+	return (j);
 }
 
-// unsigned int	i_next_nbr(t_stack *n, int min_size)
-// {
-// 	unsigned int	i;
-// 	unsigned int	j;
+void	push_chunk(t_stack *a, t_stack *b, int max_size, int mid_size)
+{
+	unsigned int	i;
+	unsigned int	next_i;
 
-// 	i = 0;
-// 	j = n->current_size;
-// 	while (i < n->current_size && n->stack[i] < min_size)
-// 		i++;
-// 	while (j > 0 && n->stack[j] < min_size)
-// 		j--;
-// 	if (i <= n->current_size - j)
-// 		return (i);
-// 	return (j);
-// }
-
-// #include <stdio.h>
-
-// void	push_chunk(t_stack *a, t_stack *b, int min_size)
-// {
-// 	unsigned int	i;
-// 	unsigned int	next_i;
-
-// 	while (a->current_size)
-// 	{
-// 		next_i = i_next_nbr(a, min_size);
-// 		if (a->stack[next_i] < min_size)
-// 			return ;
-// 		i = 0;
-// 		if (next_i > a->current_size / 2)
-// 		{
-// 			while (i < a->current_size - next_i)
-// 			{
-// 				rra(a);
-// 				i++;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			while (i < next_i)
-// 			{
-// 				ra(a);
-// 				i++;
-// 			}
-// 		}
-// 		pb(a, b);
-// 	}
-// }
+	while (a->current_size)
+	{
+		next_i = i_next_nbr_min(a, max_size);
+		if (a->stack[next_i] > max_size)
+			return ;
+		i = 0;
+		if (next_i > a->current_size / 2)
+			while (i++ < a->current_size - next_i)
+				rra(a);
+		else
+			while (i++ < next_i)
+				ra(a);
+		pb(a, b);
+		if (b->stack[0] <= mid_size)
+			rb(b);
+	}
+}

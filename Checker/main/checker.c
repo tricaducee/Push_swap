@@ -6,48 +6,64 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/12 12:00:49 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 14:51:07 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	exec_cmd(t_stack *a, t_stack *b, char *cmd)
+void	exec_cmd(t_stack *a, t_stack *b, t_option *arg, char *cmd)
 {
 	if (ft_strcmp(cmd, "sa\n"))
-		p_sa(a, b, YES_NO, TIME);
+		p_sa(a, b, arg);
 	else if (ft_strcmp(cmd, "sb\n"))
-		p_sb(a, b, YES_NO, TIME);
+		p_sb(a, b, arg);
 	else if (ft_strcmp(cmd, "ss\n"))
-		p_ss(a, b, YES_NO, TIME);
+		p_ss(a, b, arg);
 	else if (ft_strcmp(cmd, "pa\n"))
-		p_pa(a, b, YES_NO, TIME);
+		p_pa(a, b, arg);
 	else if (ft_strcmp(cmd, "pb\n"))
-		p_pb(a, b, YES_NO, TIME);
+		p_pb(a, b, arg);
 	else if (ft_strcmp(cmd, "ra\n"))
-		p_ra(a, b, YES_NO, TIME);
+		p_ra(a, b, arg);
 	else if (ft_strcmp(cmd, "rb\n"))
-		p_rb(a, b, YES_NO, TIME);
+		p_rb(a, b, arg);
 	else if (ft_strcmp(cmd, "rr\n"))
-		p_rr(a, b, YES_NO, TIME);
+		p_rr(a, b, arg);
 	else if (ft_strcmp(cmd, "rra\n"))
-		p_rra(a, b, YES_NO, TIME);
+		p_rra(a, b, arg);
 	else if (ft_strcmp(cmd, "rrb\n"))
-		p_rrb(a, b, YES_NO, TIME);
+		p_rrb(a, b, arg);
 	else if (ft_strcmp(cmd, "rrr\n"))
-		p_rrr(a, b, YES_NO, TIME);
+		p_rrr(a, b, arg);
 }
 
-unsigned int	what_is_the_len(int ac, char **av)
+unsigned int	what_is_the_len(int ac, char **av, t_option *arg)
 {
 	int	len;
+	unsigned int	i;
+	unsigned int	j;
 
-	if (ac < 3)
-		len = cmpt_arg_check(av[1]);
+	i = 1;
+	if (ac - arg->n_arg < 3)
+	{
+		while (av[i])
+		{
+			j = 0;
+			while (av[i][j] && ((av[i][j] >= '0' && av[i][j] <= '9')
+				|| av[i][j] == ' ' || av[i][j] == '-'))
+				j++;
+			if (!av[i][j])
+				break ;
+			i++;
+		}
+		arg->num_index = i;
+		len = cmpt_arg_check(av[i]);
+	}	
 	else if (!arg_check(av))
 		len = 0;
 	else
-		len = ac - 1;
+		len = ac - (1 + arg->n_arg);
 	return (len);
 }
 
@@ -94,8 +110,9 @@ unsigned int	option_to_i(char *str)
 	return (nbr);
 }
 
-int	pcs_multi_option(char *option)
+int	pcs_multi_option(char *option, t_option *arg)
 {
+	arg->n_arg += 1;
 	while (*option)
 	{
 		if (*option == 'p')
@@ -118,35 +135,41 @@ int	add_option(char	*option, t_option *arg)
 	if (option_cmp(option, "time=") || option_cmp(option, "t="))
 	{
 		arg->time = option_to_i(option);
+		arg->n_arg += 1;
 		return (0);
 	}
 	else if (option_cmp(option, "len=") || option_cmp(option, "l="))
 	{
 		arg->top = option_to_i(option);
+		arg->n_arg += 1;
 		return (0);
 	}
 	else if (option_cmp(option, "percent"))
 	{
 		arg->percent = 1;
+		arg->n_arg += 1;
 		return (0);
 	}
 	else if (option_cmp(option, "cmds"))
 	{
 		arg->cmds = 1;
+		arg->n_arg += 1;
 		return (0);
 	}
 	else if (option_cmp(option, "stacks"))
 	{
 		arg->stacks = 1;
+		arg->n_arg += 1;
 		return (0);
 	}
 	else if (*option == 'p' || *option == 'c' || *option == 's')
-		return (pcs_multi_option(option));
+		return (pcs_multi_option(option, arg));
 	else if (option_cmp(option, "full") || option_cmp(option, "f"))
 	{
 		arg->stacks = 1;
 		arg->percent = 1;
 		arg->cmds = 1;
+		arg->n_arg += 1;
 		return (0);
 	}
 	return (1);
@@ -159,6 +182,8 @@ char	*check_option(char **av, t_option *arg)
 	i = 1;
 	while (av[i])
 	{
+		if (!av[i][0])
+			return (av[i]);
 		if (av[i][0] == '-')
 			if (av[i][1] && (av[i][1] > '9' || av[i][1] < '0'))
 				if (add_option(av[i] + 1, arg))
@@ -170,55 +195,56 @@ char	*check_option(char **av, t_option *arg)
 
 int	main(int ac, char **av)
 {
-	// t_stack			a;
-	// t_stack			b;
+	t_stack			a;
+	t_stack			b;
 	t_option		arg;
 	char			*cmd;
-	//unsigned int	len;
+	unsigned int	len;
 
-	if (ac < 1)
+	if (ac < 2)
 		return (0);
 	set_option(&arg);
 	cmd = check_option(av, &arg);
 	if (cmd)
 	{
-		ft_printfd(2, "Invalid option : %s\n", cmd);
+		ft_printfd(1, "Invalid option : %s", cmd);
+		return (0);
+	}
+	if (ac - arg.n_arg < 2)
+	{
+		ft_printfd(2, "ERROR");
 		return (1);
 	}
-	ft_printfd(1, "arg.time = %u\n", arg.time);
-	ft_printfd(1, "arg.top = %u\n", arg.top);
-	ft_printfd(1, "arg.stacks = %u\n", arg.stacks);
-	ft_printfd(1, "arg.percent = %u\n", arg.percent);
-	ft_printfd(1, "arg.cmds = %u\n", arg.cmds);
-	//if (ac > 2)
-	//{
-	//	cmd = check_option(ac, av, &arg);
-	//	if (cmd)
-	//	{
-	//		ft_printfd(1, "Invalid option : %s", cmd);
-	//		return (0);
-	//	}
-	//}
-	//len = what_is_the_len(ac, av);
-	//if (len < 2)
-	//	exit_error("ERROR ARG");
-	//set_stacks(&a, &b, len);
-	//if (ac > 2)
-	//	strarray_to_nbrarray(&a, av);
-	//else
-	//	split_arg(&a, av[1]);
-	//ft_printfd(1, "\033[?25l");
-	//p_comment(&a, &b, 1, "STACKS");
-	//cmd = get_next_line(STDIN_FILENO);
-	//while (cmd)
-	//{
-	//	exec_cmd(&a, &b, cmd);
-	//	free(cmd);
-	//	cmd = get_next_line(STDIN_FILENO);
-	//}
-	//sorted_checker(&a, &b);
-	//ft_printfd(1, "\033[?25h");
-	//free(a.stack);
-	//free(b.stack);
+	len = what_is_the_len(ac, av, &arg);
+	if (len < 2)
+		exit_error("ERROR ARG");
+	set_stacks(&a, &b, len);
+	if (ac - arg.n_arg > 2)
+	{
+		ft_printfd(1, "strarray\n");
+		strarray_to_nbrarray(&a, av);
+	}
+	else
+		split_arg(&a, av[arg.num_index]);
+	// ft_printfd(1, "arg.time = %u\n", arg.time);
+	// ft_printfd(1, "arg.top = %u\n", arg.top);
+	// ft_printfd(1, "arg.percent = %u\n", arg.percent);
+	// ft_printfd(1, "arg.stacks = %u\n", arg.stacks);
+	// ft_printfd(1, "arg.cmds = %u\n", arg.cmds);
+	// ft_printfd(1, "arg.n_arg = %u\n", arg.n_arg);
+	// ft_printfd(1, "arg.num_index = %u\n", arg.num_index);
+	ft_printfd(1, "\033[?25l");
+	p_comment(&a, &b, &arg, "STACKS");
+	cmd = get_next_line(STDIN_FILENO);
+	while (cmd)
+	{
+		exec_cmd(&a, &b, &arg, cmd);
+		free(cmd);
+		cmd = get_next_line(STDIN_FILENO);
+	}
+	sorted_checker(&a, &b, &arg);
+	ft_printfd(1, "\033[?25h");
+	free(a.stack);
+	free(b.stack);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:11:55 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 01:39:100 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 17:22:27 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ unsigned int	what_is_the_len(int ac, char **av)
 	return (len);
 }
 
-#include <stdio.h>
-
-int	main(int ac, char **av)
+int	stacks_free(t_stack *a, t_stack *b)
 {
-	t_stack			a;
-	t_stack			b;
-	//int				size;
+	free(a->stack);
+	free(b->stack);
+	return (0);
+}
+
+unsigned int	set_all(int ac, char **av, t_stack *a, t_stack *b)
+{
 	unsigned int	len;
 
 	if (ac < 2)
@@ -39,45 +41,41 @@ int	main(int ac, char **av)
 	len = what_is_the_len(ac, av);
 	if (len < 2)
 		exit_error("ERROR ARG");
-	set_stacks(&a, &b, len);
-	//len = a.real_size / 12;
+	set_stacks(a, b, len);
 	if (ac > 2)
-		strarray_to_nbrarray(&a, av);
+		strarray_to_nbrarray(a, av);
 	else
-		split_arg(&a, av[1]);
-	if (sorted_checker(&a))
-	{
-		free(a.stack);
-		free(b.stack);
+		split_arg(a, av[1]);
+	if (sorted_checker(a))
+		return (stacks_free(a, b));
+	return (len);
+}
+
+int	main(int ac, char **av)
+{
+	t_stack			a;
+	t_stack			b;
+	unsigned int	len;
+
+	len = set_all(ac, av, &a, &b);
+	if (!len)
 		return (0);
-	}
 	if (len == 2)
 	{
 		if (a.stack[0] > a.stack[1])
 			sa(&a);
-		free(a.stack);
-		free(b.stack);
-		return (0);
 	}
-	if (len == 3)
-	{
+	else if (len == 3)
 		three_sort(&a);
-		free(a.stack);
-		free(b.stack);
-		return (0);
-	}
-	if (len < 6)
-	{
+	else if (len < 6)
 		five_sort(&a, &b);
-		free(a.stack);
-		free(b.stack);
-		return (0);
+	else
+	{
+		while (a.current_size > 0)
+			push_chunk(&a, &b, monmin(&a, min_size(&a),
+					(a.current_size / 8 + 21)), monmin(&a, min_size(&a),
+					(a.current_size / 8 + 21) / 2));
+		sort_b(&a, &b);
 	}
-
-	while (a.current_size > 0)
-		push_chunk(&a, &b, monmin(&a, min_size(&a), (a.current_size / 6 + 32) / 2));
-	sort_b(&a, &b);
-	free(a.stack);
-	free(b.stack);
-	return (0);
+	return (stacks_free(&a, &b));
 }

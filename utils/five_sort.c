@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:26:32 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/12 03:30:11 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 15:29:04 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,11 @@ void	two_push(t_stack *a, t_stack *b)
 		if (min_i == 1)
 			sa(a);
 		else if (min_i > a->current_size / 2)
-			while (i < a->current_size - min_i)
-			{
+			while (i++ < a->current_size - min_i)
 				rra(a);
-				i++;
-			}
 		else
-			while (i < min_i)
-			{
+			while (i++ < min_i)
 				ra(a);
-				i++;
-			}
 		pb(a, b);
 	}
 }
