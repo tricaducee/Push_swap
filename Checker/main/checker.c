@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/14 14:51:07 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 19:08:36 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,40 +128,27 @@ int	pcs_multi_option(char *option, t_option *arg)
 	return (0);
 }
 
+int	plus_option(unsigned int *n, t_option *arg, unsigned int n_add)
+{
+	*n = n_add;
+	arg->n_arg += 1;
+	return (0);
+}
+
 int	add_option(char	*option, t_option *arg)
 {
 	if (invalid_option(option))
 		return (1);
 	if (option_cmp(option, "time=") || option_cmp(option, "t="))
-	{
-		arg->time = option_to_i(option);
-		arg->n_arg += 1;
-		return (0);
-	}
+		return (plus_option(&arg->time, arg, option_to_i(option)));
 	else if (option_cmp(option, "len=") || option_cmp(option, "l="))
-	{
-		arg->top = option_to_i(option);
-		arg->n_arg += 1;
-		return (0);
-	}
+		return (plus_option(&arg->top, arg, option_to_i(option)));
 	else if (option_cmp(option, "percent"))
-	{
-		arg->percent = 1;
-		arg->n_arg += 1;
-		return (0);
-	}
+		return (plus_option(&arg->percent, arg, 1));
 	else if (option_cmp(option, "cmds"))
-	{
-		arg->cmds = 1;
-		arg->n_arg += 1;
-		return (0);
-	}
+		return (plus_option(&arg->cmds, arg, 1));
 	else if (option_cmp(option, "stacks"))
-	{
-		arg->stacks = 1;
-		arg->n_arg += 1;
-		return (0);
-	}
+		return (plus_option(&arg->stacks, arg, 1));
 	else if (*option == 'p' || *option == 'c' || *option == 's')
 		return (pcs_multi_option(option, arg));
 	else if (option_cmp(option, "full") || option_cmp(option, "f"))
@@ -208,7 +195,7 @@ int	main(int ac, char **av)
 	if (cmd)
 	{
 		ft_printfd(1, "Invalid option : %s", cmd);
-		return (0);
+		return (1);
 	}
 	if (ac - arg.n_arg < 2)
 	{
@@ -220,10 +207,7 @@ int	main(int ac, char **av)
 		exit_error("ERROR ARG");
 	set_stacks(&a, &b, len);
 	if (ac - arg.n_arg > 2)
-	{
-		ft_printfd(1, "strarray\n");
 		strarray_to_nbrarray(&a, av);
-	}
 	else
 		split_arg(&a, av[arg.num_index]);
 	// ft_printfd(1, "arg.time = %u\n", arg.time);

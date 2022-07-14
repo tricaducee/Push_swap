@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:11:55 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/14 17:22:27 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 20:21:29 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,18 @@ int	main(int ac, char **av)
 	if (!len)
 		return (0);
 	if (len == 2)
-	{
 		if (a.stack[0] > a.stack[1])
 			sa(&a);
-	}
-	else if (len == 3)
+	if (len == 3)
 		three_sort(&a);
-	else if (len < 6)
+	else if (len == 4 || len == 5)
 		five_sort(&a, &b);
-	else
+	else if (len > 5)
 	{
 		while (a.current_size > 0)
 			push_chunk(&a, &b, monmin(&a, min_size(&a),
-					(a.current_size / 8 + 21)), monmin(&a, min_size(&a),
-					(a.current_size / 8 + 21) / 2));
+					(a.current_size / 4 + 42) / 2), monmin(&a, min_size(&a),
+					((a.current_size / 4 + 42) / 2) / 2));
 		sort_b(&a, &b);
 	}
 	return (stacks_free(&a, &b));

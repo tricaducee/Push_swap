@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 20:47:19 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/14 17:23:00 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/07/14 20:22:09 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,10 @@ void	push_chunk(t_stack *a, t_stack *b, int max_size, int mid_size)
 		pb(a, b);
 		if (b->stack[0] <= mid_size)
 			rb(b);
+		if ((b->current_size > 1 && b->stack[0] < b->stack[1])
+			&& (a->current_size > 1 && a->stack[0] > a->stack[1]))
+			ss(a, b);
+		else if (b->current_size > 1 && b->stack[0] < b->stack[1])
+			sb(b);
 	}
 }
