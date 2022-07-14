@@ -118,13 +118,11 @@ int	add_option(char	*option, t_option *arg)
 	if (option_cmp(option, "time=") || option_cmp(option, "t="))
 	{
 		arg->time = option_to_i(option);
-		ft_printfd(1, "time\n");
 		return (0);
 	}
 	else if (option_cmp(option, "len=") || option_cmp(option, "l="))
 	{
 		arg->top = option_to_i(option);
-			ft_printfd(1, "top\n");
 		return (0);
 	}
 	else if (option_cmp(option, "percent"))
