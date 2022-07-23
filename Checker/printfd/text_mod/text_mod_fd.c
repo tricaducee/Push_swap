@@ -75,7 +75,3 @@ int	text_mod_fd(int fd, const char *str, int *i)
 	}
 	return (0);
 }
-	//if (str[*i] == ';')
-	//	rgb(str, i);
-	//else if (str[*i] == ':')
-	//	eight_bit(str, i);

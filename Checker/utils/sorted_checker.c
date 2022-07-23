@@ -12,24 +12,34 @@
 
 #include "../HEADER/checker.h"
 
-void	print_ok(void)
+void	print_ok(t_option *arg)
 {
-	ft_printfd(1, "#+g\n.OKOKOK.  OK .OK  \n");
-	ft_printfd(1, "OK    OK  OK KO   \n");
-	ft_printfd(1, "OK    OK  OKOK    \n");
-	ft_printfd(1, "OK    OK  OKOKO   \n");
-	ft_printfd(1, "OK    OK  OK  OK  \n");
-	ft_printfd(1, "'OKOKOK'  OK   KO.#0\n\n");
+	if (arg->min)
+		ft_printfd(1, "#+g[OK]#0\n                    \n");
+	else
+	{
+		ft_printfd(1, "#+g\n.OKOKOK.  OK .OK  \n");
+		ft_printfd(1, "OK    OK  OK KO   \n");
+		ft_printfd(1, "OK    OK  OKOK    \n");
+		ft_printfd(1, "OK    OK  OKOKO   \n");
+		ft_printfd(1, "OK    OK  OK  OK  \n");
+		ft_printfd(1, "'OKOKOK'  OK   KO.#0\n\n");
+	}
 }
 
-void	print_ko(void)
+void	print_ko(t_option *arg)
 {
-	ft_printfd(1, "#+r\nKO .KO    .KOKOKO.\n");
-	ft_printfd(1, "KO OK     KO    KO\n");
-	ft_printfd(1, "KOKO      KO    KO\n");
-	ft_printfd(1, "KOKOK     KO    KO\n");
-	ft_printfd(1, "KO  KO    KO    KO\n");
-	ft_printfd(1, "KO   OK.  'KOKOKO'#0\n\n");
+	if (arg->min)
+		ft_printfd(1, "#+r[KO]#0\n                    \n");
+	else
+	{
+		ft_printfd(1, "#+r\nKO .KO    .KOKOKO.\n");
+		ft_printfd(1, "KO OK     KO    KO\n");
+		ft_printfd(1, "KOKO      KO    KO\n");
+		ft_printfd(1, "KOKOK     KO    KO\n");
+		ft_printfd(1, "KO  KO    KO    KO\n");
+		ft_printfd(1, "KO   OK.  'KOKOKO'#0\n\n");
+	}
 }
 
 int	sorted_checker(t_stack *a, t_stack *b, t_option *arg)
@@ -44,7 +54,7 @@ int	sorted_checker(t_stack *a, t_stack *b, t_option *arg)
 			p_final_comment(a, b, arg, "FAIL");
 			if (arg->percent)
 				ft_printfd(1, "\r\033[A\033[A");
-			print_ko();
+			print_ko(arg);
 			return (0);
 		}
 		i++;
@@ -52,6 +62,6 @@ int	sorted_checker(t_stack *a, t_stack *b, t_option *arg)
 	p_final_comment(a, b, arg, "SORTED");
 	if (arg->percent)
 		ft_printfd(1, "\r\033[A\033[A");
-	print_ok();
+	print_ok(arg);
 	return (1);
 }

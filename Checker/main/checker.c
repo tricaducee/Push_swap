@@ -110,7 +110,7 @@ unsigned int	option_to_i(char *str)
 	return (nbr);
 }
 
-int	pcs_multi_option(char *option, t_option *arg)
+int	pcso_multi_option(char *option, t_option *arg)
 {
 	arg->n_arg += 1;
 	while (*option)
@@ -121,6 +121,8 @@ int	pcs_multi_option(char *option, t_option *arg)
 			arg->cmds = 1;
 		else if (*option == 's')
 			arg->stacks = 1;
+		else if (*option == 'm')
+			arg->min = 1;
 		else
 			return (1);
 		option++;
@@ -149,8 +151,10 @@ int	add_option(char	*option, t_option *arg)
 		return (plus_option(&arg->cmds, arg, 1));
 	else if (option_cmp(option, "stacks"))
 		return (plus_option(&arg->stacks, arg, 1));
-	else if (*option == 'p' || *option == 'c' || *option == 's')
-		return (pcs_multi_option(option, arg));
+	else if (option_cmp(option, "min"))
+		return (plus_option(&arg->min, arg, 1));
+	else if (*option == 'p' || *option == 'c' || *option == 's' || *option == 'o')
+		return (pcso_multi_option(option, arg));
 	else if (option_cmp(option, "full") || option_cmp(option, "f"))
 	{
 		arg->stacks = 1;

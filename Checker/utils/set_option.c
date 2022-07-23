@@ -9,4 +9,5 @@ void	set_option(t_option *arg)
 	arg->stacks = 0;
 	arg->n_arg = 0;
 	arg->num_index = 1;
+	arg->min = 0;
 }

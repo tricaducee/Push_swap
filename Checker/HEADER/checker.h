@@ -37,6 +37,7 @@ typedef struct S_option
 	unsigned int	stacks;
 	unsigned int	n_arg;
 	unsigned int	num_index;
+	unsigned int	min;
 }                   t_option;
 
 /*----------------CMD-----------------*/

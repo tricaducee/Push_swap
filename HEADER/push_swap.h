@@ -57,7 +57,7 @@ void			sort_b(t_stack *a, t_stack *b);
 void			strarray_to_nbrarray(t_stack *n, char **av);
 void			three_sort(t_stack *n);
 int				sorted_checker(t_stack *n);
-int				i_max_size(t_stack *n);
+int				i_max_size(t_stack *n, unsigned int *s_check);
 int				i_min_size(t_stack *n);
 void			five_sort(t_stack *a, t_stack *b);
 int				monmin(t_stack *n, int min_size, unsigned int len);

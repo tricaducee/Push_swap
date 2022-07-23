@@ -1,0 +1,72 @@
+#!/bin/zsh
+
+BOLD="\033[1m"
+
+LINE="\033[4m"
+
+ITAL="\033[3m"
+
+PURPLE="\033[35m"
+
+BLUE="\033[34m"
+
+RST="\033[0m"
+
+R="\033[41m"
+
+TXT=$BOLD$LINE$ITAL$PURPLE
+
+TXTB=$BOLD$LINE$BLUE
+
+NAME=../push_swap
+
+echo "\n\033[41m    $RST \033[41m $RST  \033[41m $RST \033[41m    $RST \033[41m $RST      \033[41m    $RST \033[41m $RST     \033[41m $RST   \033[41m  $RST   \033[41m    $RST"
+echo "\033[41m $RST  \033[41m $RST \033[41m $RST  \033[41m $RST \033[41m $RST    \033[41m $RST      \033[41m $RST    \033[41m $RST  \033[41m $RST  \033[41m $RST  \033[41m $RST  \033[41m $RST  \033[41m $RST  \033[41m $RST"
+echo "\033[41m    $RST \033[41m $RST  \033[41m $RST \033[41m    $RST \033[41m    $RST   \033[41m    $RST \033[41m $RST  \033[41m $RST  \033[41m $RST \033[41m      $RST \033[41m    $RST"
+echo "\033[41m $RST    \033[41m $RST  \033[41m $RST    \033[41m $RST \033[41m $RST  \033[41m $RST      \033[41m $RST \033[41m $RST  \033[41m $RST  \033[41m $RST \033[41m $RST    \033[41m $RST \033[41m $RST   "
+echo "\033[41m $RST    \033[41m    $RST \033[41m    $RST \033[41m $RST  \033[41m $RST   \033[41m    $RST  \033[41m  $RST \033[41m  $RST  \033[41m $RST    \033[41m $RST \033[41m $RST   "
+echo "                                                   "
+echo "                   $TXTB TESTER $RST\n"
+
+make -C ..
+if [ ! -e ../push_swap ]
+then
+	echo "\033[31mERROR$RST : $ITAL\033[31mLa compilation à échouée$RST"
+	exit 1
+fi
+
+if [ ! -e checker ]
+then
+	make
+fi
+
+echo "$TXT\nTest pour 3 :$RST\n"
+for i in {1..5}
+do
+	ARG="`ruby -e "puts (1..3).to_a.shuffle.join (' ')"`"
+	$NAME $ARG | ./checker $ARG -cm
+done
+echo "$TXT\nTest pour 4 :$RST\n"
+for i in {1..5}
+do
+	ARG="`ruby -e "puts (1..4).to_a.shuffle.join (' ')"`"
+	$NAME $ARG | ./checker $ARG -cm
+done
+echo "$TXT\nTest pour 5 :$RST\n"
+for i in {1..5}
+do
+	ARG="`ruby -e "puts (1..5).to_a.shuffle.join (' ')"`"
+	$NAME $ARG | ./checker $ARG -cm
+done
+echo "$TXT\nTest pour 100 :$RST\n"
+for i in {1..10}
+do
+	ARG="`ruby -e "puts (-49..50).to_a.shuffle.join (' ')"`"
+	$NAME $ARG | ./checker $ARG -cm
+done
+echo "$TXT\nTest pour 500 :$RST\n"
+for i in {1..10}
+do
+	ARG="`ruby -e "puts (-249..250).to_a.shuffle.join (' ')"`"
+	$NAME $ARG | ./checker $ARG -cm
+done
