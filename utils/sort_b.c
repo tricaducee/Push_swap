@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../HEADER/push_swap.h"
-//#include <stdio.h>
 
 void	sort_b(t_stack *a, t_stack *b)
 {
@@ -22,7 +21,6 @@ void	sort_b(t_stack *a, t_stack *b)
 	s_check = 1;
 	while (b->current_size)
 	{
-		//printf("s_check = %u\n", s_check);
 		max_i = i_max_size(b, &s_check);
 		i = 0;
 		if (max_i == 1)

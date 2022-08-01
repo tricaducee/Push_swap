@@ -51,6 +51,35 @@ unsigned int	set_all(int ac, char **av, t_stack *a, t_stack *b)
 	return (len);
 }
 
+// int	main(int ac, char **av)
+// {
+// 	t_stack			a;
+// 	t_stack			b;
+// 	unsigned int	len;
+
+// 	len = set_all(ac, av, &a, &b);
+// 	if (!len)
+// 		return (0);
+// 	if (len == 2)
+// 		if (a.stack[0] > a.stack[1])
+// 			sa(&a);
+// 	if (len == 3)
+// 		three_sort(&a);
+// 	else if (len == 4 || len == 5)
+// 		five_sort(&a, &b);
+// 	else if (len > 5)
+// 	{
+// 		while (a.current_size > 0)
+// 			push_chunk(&a, &b, monmin(&a, min_size(&a),
+// 					(a.current_size / 4 + 42) / 2), monmin(&a, min_size(&a),
+// 					((a.current_size / 4 + 42) / 2) / 2));
+// 		sort_b(&a, &b);
+// 	}
+// 	return (stacks_free(&a, &b));
+// }
+
+/*----------TEST-----------*/
+
 int	main(int ac, char **av)
 {
 	t_stack			a;
@@ -68,12 +97,6 @@ int	main(int ac, char **av)
 	else if (len == 4 || len == 5)
 		five_sort(&a, &b);
 	else if (len > 5)
-	{
-		while (a.current_size > 0)
-			push_chunk(&a, &b, monmin(&a, min_size(&a),
-					(a.current_size / 4 + 42) / 2), monmin(&a, min_size(&a),
-					((a.current_size / 4 + 42) / 2) / 2));
-		sort_b(&a, &b);
-	}
+		simple_sort(&a, &b);
 	return (stacks_free(&a, &b));
 }

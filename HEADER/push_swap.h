@@ -67,4 +67,8 @@ int				monmin(t_stack *n, int min_size, unsigned int len);
 
 void			exit_error(char *str);
 
+/*----------------TEST-----------------*/
+
+void simple_sort(t_stack *a, t_stack *b);
+
 #endif
