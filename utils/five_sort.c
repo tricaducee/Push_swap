@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:26:32 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/14 15:29:04 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/07 02:23:35 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	two_push(t_stack *a, t_stack *b)
 void	five_sort(t_stack *a, t_stack *b)
 {
 	two_push(a, b);
-	if (!sorted_checker(a))
+	if (!sorted_checker(a, b))
 		three_sort(a);
 	if (b->current_size == 2)
 		pa(b, a);

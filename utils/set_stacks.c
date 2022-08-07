@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:25:47 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/14 15:32:53 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/07 03:20:23 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	set_stacks(t_stack *a, t_stack *b, unsigned int size)
 	b->real_size = size;
 	b->current_size = 0;
 	b->unsorted_size = 0;
+	b->stack = NULL;
 	a->stack = malloc(size * sizeof(int));
 	if (!a->stack)
-		exit_error("malloc failure");
+		exit_error("Error : malloc failure", a, b);
 	b->stack = malloc(size * sizeof(int));
 	if (!b->stack)
-		exit_error("malloc failure");
+		exit_error("Error : malloc failure", a, b);
 }

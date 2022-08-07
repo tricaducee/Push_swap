@@ -6,7 +6,7 @@
 #    By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:48:42 by hrolle            #+#    #+#              #
-#    Updated: 2022/07/09 20:54:54 by hrolle           ###   ########.fr        #
+#    Updated: 2022/08/07 08:41:45 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
 
 $(NAME) : $(OBJ)
 	$(ECHO) "$(YELLOW)Compilation de push_swap...$(RESETTXT)"

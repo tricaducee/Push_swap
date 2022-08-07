@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:14:03 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/14 17:23:16 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/07 03:22:32 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,18 @@ void			ss(t_stack *a, t_stack *b);
 void			set_stacks(t_stack *a, t_stack *b, unsigned int size);
 int				arg_check(char **av);
 int				ft_atoi(const char *str);
+int				ft_satoi(const char *str, t_stack *a, t_stack *b);
 int				max_size(t_stack *n);
 int				min_size(t_stack *n);
 int				monmax(t_stack *n, int max_size, unsigned int len);
 void			simple_push_chunk(t_stack *a, t_stack *b, int min_size);
 void			push_chunk(t_stack *a, t_stack *b, int max_size, int mid_size);
 unsigned int	cmpt_arg_check(char *arg);
-void			split_arg(t_stack *n, char *arg);
+void			split_arg(t_stack *a, t_stack *b, char *arg);
 void			sort_b(t_stack *a, t_stack *b);
-void			strarray_to_nbrarray(t_stack *n, char **av);
+void			strarray_to_nbrarray(t_stack *a, t_stack *b, char **av);
 void			three_sort(t_stack *n);
-int				sorted_checker(t_stack *n);
+int				sorted_checker(t_stack *a, t_stack *b);
 int				i_max_size(t_stack *n, unsigned int *s_check);
 int				i_min_size(t_stack *n);
 void			five_sort(t_stack *a, t_stack *b);
@@ -65,7 +66,8 @@ int				monmin(t_stack *n, int min_size, unsigned int len);
 
 /*---------------SECURE----------------*/
 
-void			exit_error(char *str);
+void			exit_error_s(char *str);
+void			exit_error(char *str, t_stack *a, t_stack *b);
 
 /*----------------TEST-----------------*/
 

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorted_checker.c                                   :+:      :+:    :+:   */
+/*   ft_satoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 15:26:00 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/07 02:21:54 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/07 03:01:46 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/07 03:37:53 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/push_swap.h"
 
-int	sorted_checker(t_stack *a, t_stack *b)
+int	ft_satoi(const char *str, t_stack *a, t_stack *b)
 {
-	unsigned int	i;
+	int				pn;
+	long long int	nbr;
 
-	i = 0;
-	if (b->current_size)
-		return (0);
-	while (i < a->current_size - 1)
-	{
-		if (a->stack[i] > a->stack[i + 1])
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
+	pn = 1;
+	nbr = 0;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '-' || *str == '+')
+		if (*(str++) == '-')
+			pn *= -1;
+	while (*str >= '0' && *str <= '9')
+		nbr = nbr * 10 + (*(str++) - '0');
+	nbr *= pn;
+	if (nbr > 2147483647 || nbr < -2147483648)
+		exit_error("Error", a, b);
+	return ((int)nbr);
 }
