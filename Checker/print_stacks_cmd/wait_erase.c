@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   wait_erase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:41:30 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:10:47 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/08 20:38:09 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 20:38:10 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	swap(t_stack *nb)
+void	wait_erase(unsigned int lines, unsigned int time)
 {
-	int	tmp;
+	unsigned int	i;
 
-	if (nb->current_size < 2)
-		return ;
-	tmp = nb->stack[0];
-	nb->stack[0] = nb->stack[1];
-	nb->stack[1] = tmp;
-}
-
-void	sa(t_stack *a)
-{
-	swap(a);
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_stack *b)
-{
-	swap(b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
+	i = 0;
+	ft_sleep(time);
+	ft_printfd(1, "\r");
+	while (i < lines)
+	{
+		ft_printfd(1, "\033[A");
+		i++;
+	}
 }

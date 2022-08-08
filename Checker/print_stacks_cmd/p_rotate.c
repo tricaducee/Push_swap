@@ -1,49 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   p_rotate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:41:23 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:10:29 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/08 19:41:31 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 19:42:37 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	rotate(t_stack *nb)
+void	p_ra(t_stack *a, t_stack *b, t_option *arg)
 {
-	unsigned int	i;
-	int				tmp;
-
-	if (nb->current_size < 2)
-		return ;
-	i = 0;
-	tmp = nb->stack[0];
-	while (i < nb->current_size - 1)
-	{
-		nb->stack[i] = nb->stack[i + 1];
-		i++;
-	}
-	nb->stack[i] = tmp;
-}
-
-void	ra(t_stack *a)
-{
+	a->cmds += 1;
 	rotate(a);
-	write(1, "ra\n", 3);
+	if (arg->stacks)
+		ft_printfd(1, "#+gRA            :#0\n");
+	w_print_stacks(a, b, arg);
 }
 
-void	rb(t_stack *b)
+void	p_rb(t_stack *a, t_stack *b, t_option *arg)
 {
+	a->cmds += 1;
 	rotate(b);
-	write(1, "rb\n", 3);
+	if (arg->stacks)
+		ft_printfd(1, "#+gRB            :#0\n");
+	w_print_stacks(a, b, arg);
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	p_rr(t_stack *a, t_stack *b, t_option *arg)
 {
+	a->cmds += 1;
 	rotate(a);
 	rotate(b);
-	write(1, "rr\n", 3);
+	if (arg->stacks)
+		ft_printfd(1, "#+gRR            :#0\n");
+	w_print_stacks(a, b, arg);
 }

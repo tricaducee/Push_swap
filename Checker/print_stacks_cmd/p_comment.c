@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   p_comment.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:41:30 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:10:47 by hrolle           ###   ########.fr       */
+/*   Created: 2022/07/07 20:50:59 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 19:43:46 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	swap(t_stack *nb)
+void	p_comment(t_stack *a, t_stack *b, t_option *arg, char *str)
 {
-	int	tmp;
-
-	if (nb->current_size < 2)
-		return ;
-	tmp = nb->stack[0];
-	nb->stack[0] = nb->stack[1];
-	nb->stack[1] = tmp;
+	if (arg->stacks)
+		ft_printfd(1, "#+g%-14.14s:#0\n", str);
+	w_print_stacks(a, b, arg);
 }
 
-void	sa(t_stack *a)
+void	p_final_comment(t_stack *a, t_stack *b, t_option *arg, char *str)
 {
-	swap(a);
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_stack *b)
-{
-	swap(b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
+	if (arg->stacks)
+		ft_printfd(1, "#+g%-14.14s:#0\n", str);
+	f_print_stacks(a, b, arg);
 }

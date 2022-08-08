@@ -1,9 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/08 18:01:18 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 18:07:26 by hrolle           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../HEADER/push_swap.h"
 
 int	find_min(t_stack *n)
 {
-	unsigned int i = 0;
-	int min = n->stack[0];
+	unsigned int	i;
+	int				min;
+
+	min = n->stack[0];
+	i = 0;
 	while (i < n->current_size)
 	{
 		if (n->stack[i] < min)
@@ -13,9 +28,9 @@ int	find_min(t_stack *n)
 	return (min);
 }
 
-void test_chunk(t_stack *a, t_stack *b, int pivot_a, int pivot_b)
+void	test_chunk(t_stack *a, t_stack *b, int pivot_a, int pivot_b)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < a->current_size)
@@ -53,7 +68,7 @@ unsigned int	find_max_i(t_stack *n)
 	return (ret);
 }
 
-void selection_sort(t_stack *a, t_stack *b)
+void	selection_sort(t_stack *a, t_stack *b)
 {
 	unsigned int	i;
 	unsigned int	max;
@@ -72,7 +87,7 @@ void selection_sort(t_stack *a, t_stack *b)
 	}
 }
 
-void simple_sort(t_stack *a, t_stack *b)
+void	simple_sort(t_stack *a, t_stack *b)
 {
 	int	min;
 	int	div;

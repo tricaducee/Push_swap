@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:14:03 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/07 03:22:32 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/08 18:00:33 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ void			exit_error(char *str, t_stack *a, t_stack *b);
 
 /*----------------TEST-----------------*/
 
-void simple_sort(t_stack *a, t_stack *b);
+void			simple_sort(t_stack *a, t_stack *b);
 
 #endif

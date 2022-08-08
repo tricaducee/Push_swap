@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 03:01:46 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 17:39:56 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/08 23:57:38 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_satoi(const char *str, t_stack *a, t_stack *b)
 	{
 		free(a->stack);
 		free(b->stack);
-		exit_error("Error");
+		exit_error("Error\n");
 	}
 	return ((int)nbr);
 }

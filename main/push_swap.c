@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:11:55 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/07 03:48:39 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/08 17:59:14 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	stacks_free(t_stack *a, t_stack *b)
 	return (0);
 }
 
-void double_check(t_stack *a, t_stack *b)
+void	double_check(t_stack *a, t_stack *b)
 {
 	unsigned int	i;
 	unsigned int	j;

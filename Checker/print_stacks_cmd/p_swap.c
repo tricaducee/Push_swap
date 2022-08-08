@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   p_swap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:41:30 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:10:47 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/08 19:41:34 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 19:43:16 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	swap(t_stack *nb)
+void	p_sa(t_stack *a, t_stack *b, t_option *arg)
 {
-	int	tmp;
-
-	if (nb->current_size < 2)
-		return ;
-	tmp = nb->stack[0];
-	nb->stack[0] = nb->stack[1];
-	nb->stack[1] = tmp;
-}
-
-void	sa(t_stack *a)
-{
+	a->cmds += 1;
 	swap(a);
-	write(1, "sa\n", 3);
+	if (arg->stacks)
+		ft_printfd(1, "#+gSA            :#0\n");
+	w_print_stacks(a, b, arg);
 }
 
-void	sb(t_stack *b)
+void	p_sb(t_stack *a, t_stack *b, t_option *arg)
 {
+	a->cmds += 1;
 	swap(b);
-	write(1, "sb\n", 3);
+	if (arg->stacks)
+		ft_printfd(1, "#+gSB            :#0\n");
+	w_print_stacks(a, b, arg);
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	p_ss(t_stack *a, t_stack *b, t_option *arg)
 {
+	a->cmds += 1;
 	swap(a);
 	swap(b);
-	write(1, "ss\n", 3);
+	if (arg->stacks)
+		ft_printfd(1, "#+gSS            :#0\n");
+	w_print_stacks(a, b, arg);
 }

@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   option_to_i.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:41:30 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:10:47 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/08 21:13:26 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 21:13:48 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	swap(t_stack *nb)
+unsigned int	option_to_i(char *str)
 {
-	int	tmp;
+	unsigned int	nbr;
 
-	if (nb->current_size < 2)
-		return ;
-	tmp = nb->stack[0];
-	nb->stack[0] = nb->stack[1];
-	nb->stack[1] = tmp;
-}
-
-void	sa(t_stack *a)
-{
-	swap(a);
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_stack *b)
-{
-	swap(b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
+	nbr = 0;
+	while (*str && (*str > '9' || *str < '0'))
+		str++;
+	while (*str >= '0' && *str <= '9')
+		nbr = nbr * 10 + (*(str++) - '0');
+	return (nbr);
 }

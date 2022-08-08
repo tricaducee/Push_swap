@@ -1,49 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   p_reverse_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:41:14 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:09:26 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/08 19:41:26 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 19:42:19 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	reverse_rotate(t_stack *nb)
+void	p_rra(t_stack *a, t_stack *b, t_option *arg)
 {
-	int	i;
-	int	tmp;
-
-	if (nb->current_size < 2)
-		return ;
-	i = nb->current_size - 1;
-	tmp = nb->stack[i];
-	while (i)
-	{
-		i--;
-		nb->stack[i + 1] = nb->stack[i];
-	}
-	nb->stack[0] = tmp;
-}
-
-void	rra(t_stack *a)
-{
+	a->cmds += 1;
 	reverse_rotate(a);
-	write(1, "rra\n", 4);
+	if (arg->stacks)
+		ft_printfd(1, "#+gRRA           :#0\n");
+	w_print_stacks(a, b, arg);
 }
 
-void	rrb(t_stack *b)
+void	p_rrb(t_stack *a, t_stack *b, t_option *arg)
 {
+	a->cmds += 1;
 	reverse_rotate(b);
-	write(1, "rrb\n", 4);
+	if (arg->stacks)
+		ft_printfd(1, "#+gRRB           :#0\n");
+	w_print_stacks(a, b, arg);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	p_rrr(t_stack *a, t_stack *b, t_option *arg)
 {
+	a->cmds += 1;
 	reverse_rotate(a);
 	reverse_rotate(b);
-	write(1, "rrr\n", 4);
+	if (arg->stacks)
+		ft_printfd(1, "#+gRRR           :#0\n");
+	w_print_stacks(a, b, arg);
 }

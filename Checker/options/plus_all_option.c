@@ -1,43 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   plus_all_option.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:41:30 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:10:47 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/08 21:05:46 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 21:06:08 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	swap(t_stack *nb)
+int	plus_all_option(t_option *arg)
 {
-	int	tmp;
-
-	if (nb->current_size < 2)
-		return ;
-	tmp = nb->stack[0];
-	nb->stack[0] = nb->stack[1];
-	nb->stack[1] = tmp;
-}
-
-void	sa(t_stack *a)
-{
-	swap(a);
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_stack *b)
-{
-	swap(b);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
+	arg->stacks = 1;
+	arg->percent = 1;
+	arg->cmds = 1;
+	arg->n_arg += 1;
+	return (0);
 }
