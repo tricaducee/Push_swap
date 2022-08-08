@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/14 19:08:36 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/08 17:43:49 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,9 +211,9 @@ int	main(int ac, char **av)
 		exit_error("ERROR ARG");
 	set_stacks(&a, &b, len);
 	if (ac - arg.n_arg > 2)
-		strarray_to_nbrarray(&a, av);
+		strarray_to_nbrarray(&a, &b, av);
 	else
-		split_arg(&a, av[arg.num_index]);
+		split_arg(&a, &b, av[arg.num_index]);
 	// ft_printfd(1, "arg.time = %u\n", arg.time);
 	// ft_printfd(1, "arg.top = %u\n", arg.top);
 	// ft_printfd(1, "arg.percent = %u\n", arg.percent);

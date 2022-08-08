@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:47:26 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/14 14:01:57 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/08 17:42:41 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,13 @@ void    ss(t_stack *a, t_stack *b);
 void	set_stacks(t_stack *a, t_stack *b, unsigned int size);
 int		arg_check(char **av);
 int		ft_atoi(const char *str);
+int		ft_satoi(const char *str, t_stack *a, t_stack *b);
 int		ft_strcmp(char *s1, char *s2);
 void	exit_error(char *str);
 int		sorted_checker(t_stack *a, t_stack *b, t_option *arg);
 unsigned int	cmpt_arg_check(char *av);
-void	split_arg(t_stack *n, char *arg);
-void	strarray_to_nbrarray(t_stack *n, char **av);
+void	split_arg(t_stack *a, t_stack *b, char *arg);
+void	strarray_to_nbrarray(t_stack *a, t_stack *b, char **av);
 void	ft_sleep(unsigned int time);
 void	set_option(t_option *arg);
 

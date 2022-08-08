@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strarray_to_nbrarray.c                             :+:      :+:    :+:   */
+/*   ft_satoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 06:26:26 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 17:42:28 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/07 03:01:46 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/08 17:39:56 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	strarray_to_nbrarray(t_stack *a, t_stack *b, char **av)
+int	ft_satoi(const char *str, t_stack *a, t_stack *b)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int				pn;
+	long long int	nbr;
 
-	i = 1;
-	j = 0;
-	while (av[i])
+	pn = 1;
+	nbr = 0;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '-' || *str == '+')
+		if (*(str++) == '-')
+			pn *= -1;
+	while (*str >= '0' && *str <= '9')
+		nbr = nbr * 10 + (*(str++) - '0');
+	nbr *= pn;
+	if (nbr > 2147483647 || nbr < -2147483648)
 	{
-		if ((av[i][0] >= '0' && av[i][0] <= '9')
-			|| (av[i][0] == '-' && (av[i][1] >= '0' && av[i][1] <= '9')))
-			a->stack[j++] = ft_satoi(av[i], a, b);
-		i++;
+		free(a->stack);
+		free(b->stack);
+		exit_error("Error");
 	}
+	return ((int)nbr);
 }

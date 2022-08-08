@@ -6,13 +6,13 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 05:36:30 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/08 06:37:50 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/08 17:41:34 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	split_arg(t_stack *n, char *arg)
+void	split_arg(t_stack *a, t_stack *b, char *arg)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ void	split_arg(t_stack *n, char *arg)
 	{
 		while (*arg && *arg == ' ')
 			arg++;
-		n->stack[i++] = ft_atoi(arg);
+		a->stack[i++] = ft_satoi(arg, a, b);
 		while (*arg && *arg != ' ')
 			arg++;
 	}
