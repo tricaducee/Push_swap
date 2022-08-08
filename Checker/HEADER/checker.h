@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:47:26 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/09 00:07:14 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/09 00:43:03 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int				ft_atoi(const char *str);
 int				ft_satoi(const char *str, t_stack *a, t_stack *b);
 int				ft_strcmp(char *s1, char *s2);
 void			exit_error(char *str);
-int			return_error(char *str, int ernum);
+int				return_error(char *str, int ernum);
 int				sorted_checker(t_stack *a, t_stack *b, t_option *arg);
 unsigned int	cmpt_arg_check(char *av);
 void			split_arg(t_stack *a, t_stack *b, char *arg);
