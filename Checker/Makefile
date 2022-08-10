@@ -6,7 +6,7 @@
 #    By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:48:42 by hrolle            #+#    #+#              #
-#    Updated: 2022/08/10 04:30:51 by hrolle           ###   ########.fr        #
+#    Updated: 2022/08/10 10:03:42 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,13 @@ BOLD = \033[1m
 
 RM = rm -rf
 
-SRC = $(wildcard */*.c)
+SRC = cmd/push.c					main/exec_cmd.c				options/pcso_multi_option.c			print_stacks_cmd/p_rotate.c		utils/arg_check.c		utils/int_ft_strlen.c			\
+		cmd/reverse_rotate.c		main/sort_stack.c			options/plus_all_option.c			print_stacks_cmd/p_swap.c		utils/cmpt_arg_check.c	utils/set_stacks.c				\
+		cmd/rotate.c				options/add_option.c		options/plus_option.c				print_stacks_cmd/print_stacks.c	utils/double_check.c	utils/simple_sort_check.c		\
+		cmd/swap.c					options/check_option.c		options/set_option.c				print_stacks_cmd/wait_erase.c	utils/ft_atoi.c			utils/sorted_checker.c			\
+		gnl/get_next_line.c			options/invalid_option.c	print_stacks_cmd/p_comment.c		secure/exit_error.c				utils/ft_satoi.c		utils/split_arg.c				\
+		gnl/get_next_line_utils.c	options/option_cmp.c		print_stacks_cmd/p_push.c			secure/free_stacks.c			utils/ft_sleep.c		utils/strarray_to_nbrarray.c	\
+		main/checker.c				options/option_to_i.c		print_stacks_cmd/p_reverse_rotate.c	secure/return_error.c			utils/ft_strcmp.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -29,7 +35,7 @@ NAME = checker
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
 
 $(NAME) : $(OBJ)
 	@make -C printfd

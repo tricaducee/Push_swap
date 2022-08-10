@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:14:32 by hrolle            #+#    #+#             */
-/*   Updated: 2022/07/07 20:49:34 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/10 09:54:08 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	read_file(char **line, int fd)
 	while (!ft_strchr(*line, '\n') && i)
 	{
 		i = read(fd, buf, BUFFER_SIZE);
+		buf[i] = 0;
 		if (i && !*line)
 			*line = ft_strldup(buf, i);
 		else if (i)
