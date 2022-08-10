@@ -6,7 +6,7 @@
 #    By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:48:42 by hrolle            #+#    #+#              #
-#    Updated: 2022/08/10 11:36:36 by hrolle           ###   ########.fr        #
+#    Updated: 2022/08/10 12:07:04 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,6 @@ b_clean :
 all_clean : clean b_clean
 
 fclean : clean
-	$(ECHO) "$(RED)Suppression du checker...$(RESETTXT)"
-	@$(RM) Checker/checker
-	$(ECHO) "$(GREEN)$(BOLD)Terminé !$(RESETTXT)"
 	$(ECHO) "$(RED)Suppression de push_swap...$(RESETTXT)"
 	@$(RM) $(NAME)
 	$(ECHO) "$(GREEN)$(BOLD)Terminé !$(RESETTXT)"
