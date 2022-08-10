@@ -6,7 +6,7 @@
 #    By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:48:42 by hrolle            #+#    #+#              #
-#    Updated: 2022/08/10 10:32:28 by hrolle           ###   ########.fr        #
+#    Updated: 2022/08/10 11:36:36 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,10 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
+ifeq ($(DEBUG), debug)
+	CFLAGS += -fsanitize=address -g3
+endif
+
 $(NAME) : $(OBJ)
 	$(ECHO) "$(YELLOW)Compilation de push_swap...$(RESETTXT)"
 	@$(CC) $(CFLAGS) -o $@ $^
@@ -49,10 +53,14 @@ bonus :
 all : $(NAME) bonus
 
 clean :
-	@make clean -C Checker
 	$(ECHO) "$(RED)Suppression des objets...$(RESETTXT)"
 	@$(RM) $(OBJ)
 	$(ECHO) "$(GREEN)$(BOLD)Terminé !$(RESETTXT)"
+
+b_clean :
+	@make clean -C Checker
+
+all_clean : clean b_clean
 
 fclean : clean
 	$(ECHO) "$(RED)Suppression du checker...$(RESETTXT)"
@@ -62,6 +70,16 @@ fclean : clean
 	@$(RM) $(NAME)
 	$(ECHO) "$(GREEN)$(BOLD)Terminé !$(RESETTXT)"
 
-re : fclean all
+b_fclean :
+	@make fclean -C Checker
+
+all_fclean : fclean b_fclean
+
+re : fclean $(NAME)
+
+b_re :
+	@make re -C Checker
+
+all_re : re b_re
 
 .PHONY: all re bonus clean fclean

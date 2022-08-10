@@ -6,7 +6,7 @@
 #    By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:48:42 by hrolle            #+#    #+#              #
-#    Updated: 2022/08/10 10:32:36 by hrolle           ###   ########.fr        #
+#    Updated: 2022/08/10 11:36:47 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,10 @@ NAME = checker
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
+
+ifeq ($(DEBUG), debug)
+	CFLAGS += -fsanitize=address -g3
+endif
 
 $(NAME) : $(OBJ)
 	@make -C printfd
