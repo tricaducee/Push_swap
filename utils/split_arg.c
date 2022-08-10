@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 05:36:30 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/10 11:48:18 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/10 12:44:14 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	split_arg(t_stack *a, t_stack *b, char *arg)
 	{
 		while (*arg && *arg == ' ')
 			arg++;
+		if (*arg && (*arg == '-' || *arg == '+')
+			&& !(arg[1] <= '9' && arg[1] >= '0'))
+			return ;
 		if (*arg)
 			a->stack[i++] = ft_satoi(arg, a, b);
 		while (*arg && *arg != ' ')
