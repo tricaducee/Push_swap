@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_error.c                                       :+:      :+:    :+:   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:42:28 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/10 02:04:33 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/10 08:16:40 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/10 08:17:13 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	exit_error(char *str)
+void	sort_stack(t_stack *a, t_stack *b, t_option *arg)
 {
-	ft_printfd(2, str);
-	ft_printfd(2, "#0\033[?25h");
-	ft_printfd(1, "#0\033[?25h");
-	exit(1);
+	char		*cmd;
+
+	ft_printfd(1, "\033[?25l");
+	p_comment(a, b, arg, "STACKS");
+	cmd = get_next_line(STDIN_FILENO);
+	while (cmd)
+	{
+		if (exec_cmd(a, b, arg, cmd))
+		{
+			free(cmd);
+			stacks_free(a, b);
+			exit_error("#+r[KO]#0 : #/rInvalid command\n#0");
+		}
+		free(cmd);
+		cmd = get_next_line(STDIN_FILENO);
+	}
+	sorted_checker(a, b, arg);
+	ft_printfd(1, "\033[?25h");
 }

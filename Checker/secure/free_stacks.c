@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_error.c                                       :+:      :+:    :+:   */
+/*   free_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 21:42:28 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/10 02:04:33 by hrolle           ###   ########.fr       */
+/*   Created: 2022/08/10 08:20:16 by hrolle            #+#    #+#             */
+/*   Updated: 2022/08/10 08:20:20 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-void	exit_error(char *str)
+int	stacks_free(t_stack *a, t_stack *b)
 {
-	ft_printfd(2, str);
-	ft_printfd(2, "#0\033[?25h");
-	ft_printfd(1, "#0\033[?25h");
-	exit(1);
+	free(a->stack);
+	free(b->stack);
+	return (0);
 }

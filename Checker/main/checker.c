@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/09 00:04:14 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/10 09:14:57 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ unsigned int	what_is_the_len(int ac, char **av, t_option *arg)
 		}
 		arg->num_index = i;
 		len = cmpt_arg_check(av[i]);
-	}	
+	}
 	else if (!arg_check(av))
 		len = 0;
 	else
@@ -52,26 +52,17 @@ int	set_and_test(int ac, char **av, t_stack *n, t_option *arg)
 	cmd = check_option(av, arg);
 	if (cmd)
 	{
-		ft_printfd(1, "Invalid option : %s", cmd);
+		ft_printfd(1, "Error invalid option : %s\n", cmd);
 		return (1);
 	}
 	if (ac - arg->n_arg < 2)
 		return (return_error("Error\n", 1));
 	len = what_is_the_len(ac, av, arg);
-	if (len < 2)
+	if (len == 1)
+		return (2);
+	if (!len)
 		exit_error("Error\n");
 	set_stacks(&n[0], &n[1], len);
-	if (ac - arg->n_arg > 2)
-		strarray_to_nbrarray(&n[0], &n[1], av);
-	else
-		split_arg(&n[0], &n[1], av[arg->num_index]);
-	return (0);
-}
-
-int	stacks_free(t_stack *a, t_stack *b)
-{
-	free(a->stack);
-	free(b->stack);
 	return (0);
 }
 
@@ -79,22 +70,21 @@ int	main(int ac, char **av)
 {
 	t_stack		n[2];
 	t_option	arg;
-	char		*cmd;
+	int			ernum;
 
-	if (set_and_test(ac, av, n, &arg))
+	ernum = set_and_test(ac, av, n, &arg);
+	if (ernum == 1)
 		return (1);
+	else if (ernum)
+		return (0);
+	if (ac - arg.n_arg > 2)
+		strarray_to_nbrarray(&n[0], &n[1], av);
+	else
+		split_arg(&n[0], &n[1], av[arg.num_index]);
 	double_check(&n[0], &n[1]);
-	ft_printfd(1, "\033[?25l");
-	p_comment(&n[0], &n[1], &arg, "STACKS");
-	cmd = get_next_line(STDIN_FILENO);
-	while (cmd)
-	{
-		exec_cmd(&n[0], &n[1], &arg, cmd);
-		free(cmd);
-		cmd = get_next_line(STDIN_FILENO);
-	}
-	sorted_checker(&n[0], &n[1], &arg);
-	ft_printfd(1, "\033[?25h");
+	if (simple_sort_check(&n[0], &n[1]))
+		return (0);
+	sort_stack(&n[0], &n[1], &arg);
 	stacks_free(&n[0], &n[1]);
 	return (0);
 }

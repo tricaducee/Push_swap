@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:11:55 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 17:59:14 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/10 04:19:19 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ unsigned int	set_all(int ac, char **av, t_stack *a, t_stack *b)
 	if (ac < 2)
 		return (0);
 	len = what_is_the_len(ac, av);
+	if (len == 1)
+		return (0);
 	if (len < 2)
 		exit_error("Error\n", NULL, NULL);
 	set_stacks(a, b, len);
