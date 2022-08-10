@@ -6,7 +6,7 @@
 #    By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:48:42 by hrolle            #+#    #+#              #
-#    Updated: 2022/08/10 10:03:42 by hrolle           ###   ########.fr        #
+#    Updated: 2022/08/10 10:32:36 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ NAME = checker
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra
 
 $(NAME) : $(OBJ)
 	@make -C printfd
@@ -52,7 +52,7 @@ bonus : $(NAME)
 all : $(NAME)
 
 clean :
-	@make clean -C printfd 
+	@make clean -C printfd
 	$(ECHO) "$(RED)Suppression des objets...$(RESETTXT)"
 	@$(RM) $(OBJ)
 	$(ECHO) "$(GREEN)$(BOLD)Terminé !$(RESETTXT)"

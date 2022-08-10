@@ -6,7 +6,7 @@
 #    By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 19:48:42 by hrolle            #+#    #+#              #
-#    Updated: 2022/08/10 10:06:14 by hrolle           ###   ########.fr        #
+#    Updated: 2022/08/10 10:32:28 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra
 
 $(NAME) : $(OBJ)
 	$(ECHO) "$(YELLOW)Compilation de push_swap...$(RESETTXT)"
@@ -43,16 +43,21 @@ $(NAME) : $(OBJ)
 	$(PRINT) "$(YELLOW)Generation des objets...$(RESETTXT)\r"
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
-bonus : $(NAME)
+bonus :
+	@make -C Checker
 
-all : $(NAME)
+all : $(NAME) bonus
 
-clean : 
+clean :
+	@make clean -C Checker
 	$(ECHO) "$(RED)Suppression des objets...$(RESETTXT)"
 	@$(RM) $(OBJ)
 	$(ECHO) "$(GREEN)$(BOLD)Terminé !$(RESETTXT)"
 
 fclean : clean
+	$(ECHO) "$(RED)Suppression du checker...$(RESETTXT)"
+	@$(RM) Checker/checker
+	$(ECHO) "$(GREEN)$(BOLD)Terminé !$(RESETTXT)"
 	$(ECHO) "$(RED)Suppression de push_swap...$(RESETTXT)"
 	@$(RM) $(NAME)
 	$(ECHO) "$(GREEN)$(BOLD)Terminé !$(RESETTXT)"
