@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:02:04 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/10 11:03:44 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/11 04:45:22 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ unsigned int	cmpt_arg_check(char *arg)
 	int	i;
 
 	i = 0;
-	while (*arg)
+	while (arg && *arg)
 	{
 		while (*arg && *arg == ' ')
 			arg++;
-		while (*arg && (*arg == '-' || *arg == '+'))
+		if (!*arg)
+			break ;
+		if (*arg && (*arg == '-' || *arg == '+'))
 			arg++;
-		if (*arg && (*arg > '9' || *arg < '0'))
+		if (!*arg || (*arg > '9' || *arg < '0'))
 			return (0);
 		if (*arg && (*arg <= '9' && *arg >= '0'))
 			i++;

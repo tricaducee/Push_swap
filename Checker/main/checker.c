@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/10 09:14:57 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/11 04:38:06 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ unsigned int	what_is_the_len(int ac, char **av, t_option *arg)
 		{
 			j = 0;
 			while (av[i][j] && ((av[i][j] >= '0' && av[i][j] <= '9')
-				|| av[i][j] == ' ' || av[i][j] == '-'))
+				|| av[i][j] == ' ' || av[i][j] == '-' || av[i][j] == '+'))
 				j++;
 			if (!av[i][j])
 				break ;

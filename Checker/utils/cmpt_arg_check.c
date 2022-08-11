@@ -6,31 +6,31 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:02:04 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/10 11:05:16 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/11 04:44:34 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADER/checker.h"
 
-unsigned int	cmpt_arg_check(char *av)
+unsigned int	cmpt_arg_check(char *arg)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	if (!av)
-		return (0);
-	while (*av)
+	while (arg && *arg)
 	{
-		while (*av && *av == ' ')
-			av++;
-		while (*av && (*av == '-' || *av == '+'))
-			av++;
-		if (*av && (*av > '9' || *av < '0'))
+		while (*arg && *arg == ' ')
+			arg++;
+		if (!*arg)
+			break ;
+		if (*arg && (*arg == '-' || *arg == '+'))
+			arg++;
+		if (!*arg || (*arg > '9' || *arg < '0'))
 			return (0);
-		if (*av && (*av <= '9' && *av >= '0'))
+		if (*arg && (*arg <= '9' && *arg >= '0'))
 			i++;
-		while (*av && (*av <= '9' && *av >= '0'))
-			av++;
+		while (*arg && (*arg <= '9' && *arg >= '0'))
+			arg++;
 	}
 	return (i);
 }

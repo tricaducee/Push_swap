@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:11:55 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/10 04:19:19 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/11 02:15:17 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ unsigned int	set_all(int ac, char **av, t_stack *a, t_stack *b)
 	len = what_is_the_len(ac, av);
 	if (len == 1)
 		return (0);
-	if (len < 2)
+	if (!len)
 		exit_error("Error\n", NULL, NULL);
 	set_stacks(a, b, len);
 	if (ac > 2)
@@ -79,10 +79,12 @@ int	main(int ac, char **av)
 	len = set_all(ac, av, &a, &b);
 	if (!len)
 		return (0);
-	if (len == 2)
+	else if (len == 2)
+	{
 		if (a.stack[0] > a.stack[1])
 			sa(&a);
-	if (len == 3)
+	}
+	else if (len == 3)
 		three_sort(&a);
 	else if (len == 4 || len == 5)
 		five_sort(&a, &b);
