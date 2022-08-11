@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:48:20 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/11 04:38:06 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/11 07:58:29 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ int	set_and_test(int ac, char **av, t_stack *n, t_option *arg)
 	cmd = check_option(av, arg);
 	if (cmd)
 	{
-		ft_printfd(1, "Error invalid option : %s\n", cmd);
+		ft_printfd(1, "#+rError#0 : [#/r invalid option#0 :#/r %s#0 ]\n", cmd);
 		return (1);
 	}
 	if (ac - arg->n_arg < 2)
-		return (return_error("Error\n", 1));
+		return (return_error("#+rError#0 :#/r no valid argument#0\n", 1));
 	len = what_is_the_len(ac, av, arg);
 	if (len == 1)
 		return (2);
 	if (!len)
-		exit_error("Error\n");
+		exit_error("#+rError#0 :#/r not a number#0\n");
 	set_stacks(&n[0], &n[1], len);
 	return (0);
 }

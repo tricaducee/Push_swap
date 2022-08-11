@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 17:52:37 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:30:29 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/11 07:50:15 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	double_check(t_stack *a, t_stack *b)
 			{
 				free(a->stack);
 				free(b->stack);
-				exit_error("Error\n");
+				exit_error("#+rError#0 :#/r same number repeated#0\n");
 			}
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 03:01:46 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/08 18:05:48 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/11 07:32:57 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int	ft_satoi(const char *str, t_stack *a, t_stack *b)
 		nbr = nbr * 10 + (*(str++) - '0');
 	nbr *= pn;
 	if (nbr > 2147483647 || nbr < -2147483648)
-		exit_error("Error", a, b);
+		exit_error("Error\n", a, b);
 	return ((int)nbr);
 }
