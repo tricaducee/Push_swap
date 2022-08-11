@@ -6,7 +6,7 @@
 /*   By: hrolle <hrolle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:02:04 by hrolle            #+#    #+#             */
-/*   Updated: 2022/08/11 04:45:22 by hrolle           ###   ########.fr       */
+/*   Updated: 2022/08/11 09:28:09 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ unsigned int	cmpt_arg_check(char *arg)
 			i++;
 		while (*arg && (*arg <= '9' && *arg >= '0'))
 			arg++;
+		if (*arg && *arg != ' ')
+			return (0);
 	}
 	return (i);
 }
